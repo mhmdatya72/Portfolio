@@ -50,7 +50,7 @@ const About = () => {
   ]
 
   return (
-    <section id="about" className="section-padding bg-gray-50 dark:bg-gray-800">
+    <section id="about" className="pt-24 pb-20 px-4 bg-gray-50 dark:bg-gray-800">
       {/* Animated Divider - Top of About Section */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
@@ -109,51 +109,57 @@ const About = () => {
             <div className="w-24 h-1 bg-primary mx-auto rounded-full"></div>
           </motion.div>
 
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            {/* Content */}
-            <motion.div variants={itemVariants} className="space-y-6">
-              <p className="text-lg text-gray-600 dark:text-gray-400 leading-relaxed">
-                I'm a passionate Full Stack Web Developer with over 3 years of experience 
-                specializing in Laravel and modern web technologies. I love creating 
-                efficient, scalable, and user-friendly web applications that solve real-world problems.
-              </p>
-              
-              <p className="text-lg text-gray-600 dark:text-gray-400 leading-relaxed">
-                I've worked on multiple Laravel-based platforms improving performance, security, 
-                and scalability. At Kemework, I optimized APIs serving 1,000+ concurrent users, 
-                reducing response times by 30%. My expertise spans from backend API development 
-                to frontend user interfaces, ensuring seamless integration and optimal user experience.
-              </p>
+          <div className="max-w-6xl mx-auto">
+            <div className="grid lg:grid-cols-2 gap-12 items-center">
+              {/* Content - Left Side */}
+              <motion.div variants={itemVariants} className="space-y-6">
+                <p className="text-lg text-gray-600 dark:text-gray-400 leading-relaxed">
+                  I'm a passionate Full Stack Web Developer with over 3 years of experience 
+                  specializing in Laravel and modern web technologies. I love creating 
+                  efficient, scalable, and user-friendly web applications that solve real-world problems.
+                </p>
+                
+                <p className="text-lg text-gray-600 dark:text-gray-400 leading-relaxed">
+                  I've worked on multiple Laravel-based platforms improving performance, security, 
+                  and scalability. At Kemework, I optimized APIs serving 1,000+ concurrent users, 
+                  reducing response times by 30%. My expertise spans from backend API development 
+                  to frontend user interfaces, ensuring seamless integration and optimal user experience.
+                </p>
 
-              <p className="text-lg text-gray-600 dark:text-gray-400 leading-relaxed">
-                When I'm not coding, I enjoy learning new technologies, contributing to open-source 
-                projects, and sharing knowledge with the developer community. I believe in continuous 
-                learning and staying up-to-date with the latest industry trends and best practices.
-              </p>
+                <p className="text-lg text-gray-600 dark:text-gray-400 leading-relaxed">
+                  When I'm not coding, I enjoy learning new technologies, contributing to open-source 
+                  projects, and sharing knowledge with the developer community. I believe in continuous 
+                  learning and staying up-to-date with the latest industry trends and best practices.
+                </p>
+              </motion.div>
 
-              {/* Key Stats */}
-              <div className="grid grid-cols-2 gap-6 pt-6">
-                <div className="text-center">
-                  <div className="text-3xl font-bold text-primary mb-2">3+</div>
-                  <div className="text-gray-600 dark:text-gray-400">Years Experience</div>
+              {/* Key Stats - Right Side */}
+              <motion.div variants={itemVariants} className="space-y-8">
+                <div>
+                  <div className="grid grid-cols-2 gap-6">
+                    <div className="text-center p-4 bg-white dark:bg-gray-800 rounded-xl shadow-md">
+                      <div className="text-3xl font-bold text-primary mb-2">3+</div>
+                      <div className="text-gray-600 dark:text-gray-400 text-sm">Years Experience</div>
+                    </div>
+                    <div className="text-center p-4 bg-white dark:bg-gray-800 rounded-xl shadow-md">
+                      <div className="text-3xl font-bold text-primary mb-2">15+</div>
+                      <div className="text-gray-600 dark:text-gray-400 text-sm">Projects Completed</div>
+                    </div>
+                    <div className="text-center p-4 bg-white dark:bg-gray-800 rounded-xl shadow-md">
+                      <div className="text-3xl font-bold text-primary mb-2">1000+</div>
+                      <div className="text-gray-600 dark:text-gray-400 text-sm">Users Served</div>
+                    </div>
+                    <div className="text-center p-4 bg-white dark:bg-gray-800 rounded-xl shadow-md">
+                      <div className="text-3xl font-bold text-primary mb-2">30%</div>
+                      <div className="text-gray-600 dark:text-gray-400 text-sm">Performance Boost</div>
+                    </div>
+                  </div>
                 </div>
-                <div className="text-center">
-                  <div className="text-3xl font-bold text-primary mb-2">20+</div>
-                  <div className="text-gray-600 dark:text-gray-400">Projects Completed</div>
-                </div>
-                <div className="text-center">
-                  <div className="text-3xl font-bold text-primary mb-2">35+</div>
-                  <div className="text-gray-600 dark:text-gray-400">Users Served</div>
-                </div>
-                <div className="text-center">
-                  <div className="text-3xl font-bold text-primary mb-2">100%</div>
-                  <div className="text-gray-600 dark:text-gray-400">Performance Boost</div>
-                </div>
-              </div>
-            </motion.div>
+              </motion.div>
+            </div>
 
             {/* Achievements Grid */}
-            <motion.div variants={itemVariants} className="grid grid-cols-2 gap-6">
+            <motion.div variants={itemVariants} className="grid grid-cols-2 gap-6 max-w-2xl mx-auto mt-16">
               {achievements.map((achievement, index) => (
                 <motion.div
                   key={index}

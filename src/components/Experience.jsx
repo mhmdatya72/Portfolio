@@ -30,7 +30,7 @@ const Experience = () => {
     {
       title: "Full Stack Laravel Developer",
       company: "Kemedar",
-      period: "2/2025 - Present",
+      period: "2/2024 - Present",
       type: "Full-time",
       description: "Led backend development for a comprehensive real estate ecosystem using Laravel & Bootstrap. Working on Kemedar Proptech Super App - the first of its kind with the Super App system in the field of real estate technology.",
       achievements: [
@@ -46,7 +46,7 @@ const Experience = () => {
     {
       title: "Laravel Developer", 
       company: "Inom Tecks\\inomhub",
-      period: "4/2025 - Present",
+      period: "4/2024 - Present",
       type: "Part-time",
       description: "Built CRM systems for multiple clients, integrated APIs, improved reliability. Working on mobile app development, custom software solutions, and digital marketing services.",
       achievements: [

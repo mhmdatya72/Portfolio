@@ -32,7 +32,7 @@ const Navbar = ({ darkMode, toggleDarkMode }) => {
     { name: 'Education', href: '#education' },
     { name: 'Experience', href: '#experience' },
     { name: 'Skills', href: '#skills' },
-    { name: 'Projects', href: '/projects' },
+    { name: 'Projects', href: '#projects' },
     { name: 'Contact', href: '#contact' },
   ]
 
@@ -53,7 +53,10 @@ const Navbar = ({ darkMode, toggleDarkMode }) => {
     const isProjectsPage = window.location.pathname === '/projects'
     
     if (isProjectsPage && href.startsWith('#')) {
-      // If we're on projects page and trying to go to other sections, navigate to home
+      // If we're on projects page and trying to go to other sections, navigate to home with section
+      // Store the target section in sessionStorage for after page load
+      sessionStorage.setItem('scrollToSection', href)
+      // Also update the URL hash for better reliability
       window.location.href = `/${href}`
       return
     }

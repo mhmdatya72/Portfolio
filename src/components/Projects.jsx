@@ -171,72 +171,72 @@ const Projects = () => {
                 <div className="absolute bottom-4 left-4">
                   <div className="flex items-center justify-center w-12 h-12 bg-white/90 dark:bg-gray-800/90 rounded-lg shadow-lg">
                     <div className="text-2xl text-primary">
-                      {project.icon}
+                  {project.icon}
                     </div>
                   </div>
                 </div>
               </div>
-              
+
               {/* Project Content */}
               <div className="p-4 sm:p-6 flex flex-col flex-grow">
-                {/* Project Title */}
+              {/* Project Title */}
                 <h3 className="text-lg sm:text-xl font-bold text-gray-900 dark:text-white mb-3">
-                  {project.title}
-                </h3>
-                
-                {/* Project Description */}
+                {project.title}
+              </h3>
+              
+              {/* Project Description */}
                 <p className="text-sm sm:text-base text-gray-600 dark:text-gray-400 mb-4 leading-relaxed flex-grow">
-                  {project.description}
-                </p>
+                {project.description}
+              </p>
 
-                {/* Technologies */}
-                <div className="mb-4">
+              {/* Technologies */}
+              <div className="mb-4">
                   <h4 className="text-xs sm:text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">Technologies:</h4>
                   <div className="flex flex-wrap gap-1.5 sm:gap-2">
-                    {project.technologies.map((tech, techIndex) => (
-                      <span
-                        key={techIndex}
+                  {project.technologies.map((tech, techIndex) => (
+                    <span
+                      key={techIndex}
                         className="px-2 sm:px-3 py-1 bg-primary/10 text-primary text-xs rounded-full font-medium"
-                      >
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
+                    >
+                      {tech}
+                    </span>
+                  ))}
                 </div>
+              </div>
 
-                {/* Key Features */}
-                <div className="mb-6">
+              {/* Key Features */}
+              <div className="mb-6">
                   <h4 className="text-xs sm:text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">Key Features:</h4>
                   <ul className="text-xs sm:text-sm text-gray-600 dark:text-gray-400 space-y-1">
-                    {project.features.slice(0, 3).map((feature, featureIndex) => (
-                      <li key={featureIndex} className="flex items-start gap-2">
-                        <div className="w-1.5 h-1.5 bg-primary rounded-full mt-1.5 flex-shrink-0"></div>
-                        <span>{feature}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
+                  {project.features.slice(0, 3).map((feature, featureIndex) => (
+                    <li key={featureIndex} className="flex items-start gap-2">
+                      <div className="w-1.5 h-1.5 bg-primary rounded-full mt-1.5 flex-shrink-0"></div>
+                      <span>{feature}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
 
                 {/* Action Buttons - Fixed at bottom */}
                 <div className="flex gap-2 sm:gap-3 mt-auto">
-                  <a
-                    href={project.github}
-                    target="_blank"
-                    rel="noopener noreferrer"
+                <a
+                  href={project.github}
+                  target="_blank"
+                  rel="noopener noreferrer"
                     className="flex-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-primary hover:text-white px-3 sm:px-4 py-2 rounded-lg text-center text-xs sm:text-sm font-medium transition-colors duration-300"
-                  >
+                >
                     <FaGithub className="inline mr-1 sm:mr-2" size={12} />
-                    Code
-                  </a>
-                  <a
-                    href={project.demo}
-                    target="_blank"
-                    rel="noopener noreferrer"
+                  Code
+                </a>
+                <a
+                  href={project.demo}
+                  target="_blank"
+                  rel="noopener noreferrer"
                     className="flex-1 bg-primary hover:bg-sky-600 text-white px-3 sm:px-4 py-2 rounded-lg text-center text-xs sm:text-sm font-medium transition-colors duration-300"
-                  >
+                >
                     <FaExternalLinkAlt className="inline mr-1 sm:mr-2" size={12} />
-                    Demo
-                  </a>
+                  Demo
+                </a>
                 </div>
               </div>
             </div>
