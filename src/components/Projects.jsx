@@ -31,7 +31,7 @@ const Projects = () => {
     {
       title: 'Cordiana ERP System',
       description: 'All-in-One Enterprise Business Management Platform. A comprehensive Cloud ERP solution featuring Sales CRM, POS, HR & Payroll, Financial Accounting, and Electronic Invoicing.',
-      image: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80',
+      image: '/project-cordiana.jpg',
       technologies: ['Laravel', 'PHP 8+', 'MySQL', 'Vue.js', 'Bootstrap', 'RESTful APIs'],
       features: [
         'Cloud ERP: Sales CRM, POS, HR & Payroll, Financial Accounting, E-Invoicing',
@@ -42,12 +42,13 @@ const Projects = () => {
       github: 'https://github.com/mhmdatya72',
       demo: 'https://cordiana-sys.com/',
       status: 'Live',
+      country: 'Egypt',
       icon: <FaDatabase className="text-primary" size={32} />
     },
     {
       title: 'One Step Industrial',
       description: 'B2B E-Commerce & Equipment Supply Platform. A scalable B2B industrial marketplace supporting multi-category product hierarchies and dynamic machinery quote requests.',
-      image: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80',
+      image: '/project-onestep.jpg',
       technologies: ['Laravel', 'MySQL', 'Vue.js', 'Bootstrap', 'RESTful APIs'],
       features: [
         'Scalable B2B industrial marketplace with multi-category hierarchies',
@@ -58,12 +59,13 @@ const Projects = () => {
       github: 'https://github.com/mhmdatya72',
       demo: 'https://onestepcorp.com/',
       status: 'Live',
+      country: 'Egypt',
       icon: <FaGlobe className="text-primary" size={32} />
     },
     {
       title: 'Tour Egypt Club',
       description: 'Travel & Tourism Booking Engine. An interactive travel engine featuring dynamic tour itineraries, transport reservations, and automated quote systems.',
-      image: 'https://images.unsplash.com/photo-1473448912268-2022ce9509d8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80',
+      image: '/project-tour.jpg',
       technologies: ['Laravel', 'MySQL', 'Vue.js', 'Bootstrap'],
       features: [
         'Dynamic tour itineraries and transport reservations',
@@ -74,12 +76,13 @@ const Projects = () => {
       github: 'https://github.com/mhmdatya72',
       demo: 'https://touregyptclub.com/',
       status: 'Live',
+      country: 'Egypt',
       icon: <FaVuejs className="text-primary" size={32} />
     },
     {
       title: 'Al Manarat Al Munira',
       description: 'Heavy Equipment & Crane Fleet Management Platform. An enterprise web solution for industrial equipment hire, service management, and engineering project tracking.',
-      image: 'https://images.unsplash.com/photo-1503387762-592deb58ef4e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80',
+      image: '/project-almanarat.jpg',
       technologies: ['Laravel', 'MySQL', 'Vue.js', 'Bootstrap'],
       features: [
         'Enterprise web solution for equipment hire and service management',
@@ -90,12 +93,13 @@ const Projects = () => {
       github: 'https://github.com/mhmdatya72',
       demo: 'https://almanratalmonerah.com/',
       status: 'Live',
+      country: 'Egypt',
       icon: <FaLaravel className="text-primary" size={32} />
     },
     {
       title: 'Taggz App',
       description: 'AI-Powered Event Photo Matching Platform. Backend APIs and media processing workflows for an AI-driven event platform that matches and distributes event photos via facial recognition.',
-      image: 'https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80',
+      image: '/project-taggz.jpg',
       technologies: ['Laravel', 'PHP 8+', 'MySQL', 'RESTful APIs', 'Media Processing'],
       features: [
         'AI facial recognition photo matching and distribution',
@@ -106,6 +110,7 @@ const Projects = () => {
       github: 'https://github.com/mhmdatya72',
       demo: 'https://taggz.app/',
       status: 'Live',
+      country: 'Egypt',
       icon: <FaUsers className="text-primary" size={32} />
     },
     {
@@ -122,6 +127,7 @@ const Projects = () => {
       github: 'https://github.com/mhmdatya72',
       demo: 'https://alnasser.themok.company/',
       status: 'Live',
+      country: 'Kuwait',
       icon: <FaDatabase className="text-primary" size={32} />
     }
   ]
@@ -179,23 +185,42 @@ const Projects = () => {
           </h2>
           <div className="w-24 h-1 bg-primary mx-auto rounded-full mb-4"></div>
           <p className="text-base sm:text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto px-4">
-            A showcase of my recent work and projects that demonstrate my skills and expertise
+            A showcase of live client work — 24+ projects delivered, from enterprise ERPs to AI-powered platforms
           </p>
         </div>
 
         {/* Projects Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 mb-8 sm:mb-12">
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          animate="visible"
+          className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 mb-8 sm:mb-12"
+        >
           {projects.map((project, index) => (
-            <div key={index} className="bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden flex flex-col h-full">
+            <motion.div
+              key={index}
+              variants={itemVariants}
+              whileHover={{ y: -6 }}
+              className="bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden flex flex-col h-full transition-shadow duration-300 hover:shadow-2xl"
+            >
               {/* Project Image */}
               <div className="relative h-48 sm:h-56 overflow-hidden">
                 <img
                   src={project.image}
                   alt={project.title}
-                  className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
+                  className="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
                   loading="lazy"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent"></div>
+                <div className="absolute top-3 left-3 flex gap-2">
+                  <span className="px-2.5 py-1 bg-emerald-500 text-white text-[11px] sm:text-xs font-bold rounded-full shadow-lg">
+                    <span className="inline-block w-1.5 h-1.5 bg-white rounded-full mr-1.5 align-middle"></span>
+                    {project.status}
+                  </span>
+                  <span className="px-2.5 py-1 bg-white/90 text-gray-800 text-[11px] sm:text-xs font-semibold rounded-full shadow-lg">
+                    {project.country}
+                  </span>
+                </div>
                 <div className="absolute bottom-4 left-4">
                   <div className="flex items-center justify-center w-12 h-12 bg-white/90 dark:bg-gray-800/90 rounded-lg shadow-lg">
                     <div className="text-2xl text-primary">
@@ -236,7 +261,7 @@ const Projects = () => {
               <div className="mb-6">
                   <h4 className="text-xs sm:text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">Key Features:</h4>
                   <ul className="text-xs sm:text-sm text-gray-600 dark:text-gray-400 space-y-1">
-                  {project.features.slice(0, 3).map((feature, featureIndex) => (
+                  {project.features.map((feature, featureIndex) => (
                     <li key={featureIndex} className="flex items-start gap-2">
                       <div className="w-1.5 h-1.5 bg-primary rounded-full mt-1.5 flex-shrink-0"></div>
                       <span>{feature}</span>
@@ -267,9 +292,9 @@ const Projects = () => {
                 </a>
                 </div>
               </div>
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
 
         {/* View All Projects Button */}
         <div className="text-center mb-8">
