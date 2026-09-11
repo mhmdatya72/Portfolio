@@ -1,6 +1,7 @@
 import React from 'react'
 import { motion } from 'framer-motion'
 import { FaGraduationCap, FaCalendarAlt, FaUniversity, FaAward, FaFacebook, FaExternalLinkAlt } from 'react-icons/fa'
+import SectionDivider from './SectionDivider'
 
 const Education = () => {
   const containerVariants = {
@@ -41,49 +42,7 @@ const Education = () => {
   }
 
   return (
-    <section id="education" className="section-padding bg-white dark:bg-gray-900">
-      {/* Animated Divider - Top of Education Section */}
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.5, duration: 0.6 }}
-        className="flex justify-center mb-12"
-      >
-        <motion.div
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ delay: 0.7, duration: 0.6 }}
-          className="relative"
-        >
-          {/* Animated Dots */}
-          <div className="flex space-x-2">
-            {[0, 1, 2].map((index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ 
-                  delay: 0.9 + index * 0.2, 
-                  duration: 0.4,
-                  repeat: Infinity,
-                  repeatType: "reverse",
-                  repeatDelay: 1
-                }}
-                className="w-3 h-3 bg-primary rounded-full"
-              />
-            ))}
-          </div>
-          
-          {/* Animated Line */}
-          <motion.div
-            initial={{ width: 0 }}
-            animate={{ width: "100%" }}
-            transition={{ delay: 1.2, duration: 1 }}
-            className="absolute top-1/2 left-0 h-0.5 bg-gradient-to-r from-transparent via-primary to-transparent"
-          />
-        </motion.div>
-      </motion.div>
-
+    <section id="education" className="py-20 px-4">
       <div className="container-custom">
         <motion.div
           variants={containerVariants}
@@ -93,19 +52,20 @@ const Education = () => {
         >
           {/* Section Header */}
           <motion.div variants={itemVariants} className="text-center mb-12 md:mb-16">
+            <span className="section-eyebrow">
+              <span className="w-1.5 h-1.5 bg-primary rounded-full animate-pulse"></span>
+              Academic Background
+            </span>
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">
-              Education
+              <span className="title-gradient">Education</span>
             </h2>
-            <div className="w-24 h-1 bg-primary mx-auto rounded-full mb-4"></div>
-            <p className="text-base sm:text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto px-4">
-              My academic journey and educational background
-            </p>
+            <div className="w-24 h-1 bg-gradient-to-r from-primary to-indigo-500 mx-auto rounded-full"></div>
           </motion.div>
 
           {/* Education Card */}
-          <motion.div 
+          <motion.div
             variants={itemVariants}
-            className="bg-gray-50 dark:bg-gray-800 rounded-xl shadow-lg p-6 md:p-8 relative overflow-hidden"
+            className="glass-card glass-card-hover gradient-ring rounded-2xl p-6 md:p-10 relative overflow-hidden"
           >
             {/* Background Pattern */}
             <div className="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-full -translate-y-16 translate-x-16"></div>
@@ -113,7 +73,7 @@ const Education = () => {
             
             <div className="relative z-10">
               {/* Degree Icon */}
-              <div className="flex items-center justify-center w-16 h-16 bg-primary/10 rounded-full mb-6 mx-auto">
+              <div className="flex items-center justify-center w-16 h-16 bg-primary/10 rounded-full mb-6 mx-auto group-hover:scale-110 transition-transform duration-300">
                 <FaGraduationCap className="text-primary" size={32} />
               </div>
 
@@ -151,7 +111,7 @@ const Education = () => {
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: index * 0.1, duration: 0.5 }}
-                    className="flex items-center p-3 bg-white dark:bg-gray-700 rounded-lg shadow-sm"
+                    className="flex items-center p-3 bg-white/60 dark:bg-gray-800/60 backdrop-blur-sm rounded-lg shadow-sm border border-white/50 dark:border-white/10 hover:bg-primary/10 transition-colors duration-300"
                   >
                     <FaAward className="text-primary mr-3 flex-shrink-0" size={16} />
                     <span className="text-sm font-medium text-gray-700 dark:text-gray-300">

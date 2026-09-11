@@ -5,6 +5,7 @@ import { initEmailJS } from './config/emailjs'
 import { safeStorage } from './utils/storage'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
+import Stats from './components/Stats'
 import About from './components/About'
 import Education from './components/Education'
 import Experience from './components/Experience'
@@ -13,6 +14,7 @@ import Projects from './components/Projects'
 import Contact from './components/Contact'
 import Footer from './components/Footer'
 import BackToTop from './components/BackToTop'
+import ScrollProgress from './components/ScrollProgress'
 import AllProjects from './components/AllProjects'
 
 function App() {
@@ -124,13 +126,23 @@ function App() {
 
   return (
     <Router>
-      <div className="min-h-screen bg-white dark:bg-gray-900 transition-colors duration-300">
+      <div className="relative min-h-screen bg-gray-50 dark:bg-gray-950 transition-colors duration-300 overflow-x-hidden">
+        {/* Global modern backdrop */}
+        <div className="fixed inset-0 z-0 pointer-events-none">
+          <div className="bg-mesh absolute inset-0"></div>
+          <div className="bg-grid absolute inset-0"></div>
+          <div className="absolute top-0 left-1/3 w-[500px] h-[500px] bg-primary/10 rounded-full blur-[120px]"></div>
+          <div className="absolute bottom-0 right-1/4 w-[500px] h-[500px] bg-indigo-500/10 rounded-full blur-[120px]"></div>
+        </div>
+
         <Routes>
           <Route path="/" element={
             <>
+              <ScrollProgress />
               <Navbar darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
-              <main>
+              <main className="relative z-10">
                 <Hero />
+                <Stats />
                 <About />
                 <Education />
                 <Experience />

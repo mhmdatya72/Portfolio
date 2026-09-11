@@ -134,60 +134,27 @@ const Projects = () => {
 
 
   return (
-    <section id="projects" className="py-12 sm:py-16 px-4 bg-gray-50 dark:bg-gray-800">
-      {/* Animated Divider - Top of Projects Section */}
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.5, duration: 0.6 }}
-        className="flex justify-center mb-12"
-      >
-        <motion.div
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ delay: 0.7, duration: 0.6 }}
-          className="relative"
-        >
-          {/* Animated Dots */}
-          <div className="flex space-x-2">
-            {[0, 1, 2].map((index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ 
-                  delay: 0.9 + index * 0.2, 
-                  duration: 0.4,
-                  repeat: Infinity,
-                  repeatType: "reverse",
-                  repeatDelay: 1
-                }}
-                className="w-3 h-3 bg-primary rounded-full"
-              />
-            ))}
-          </div>
-          
-          {/* Animated Line */}
-          <motion.div
-            initial={{ width: 0 }}
-            animate={{ width: "100%" }}
-            transition={{ delay: 1.2, duration: 1 }}
-            className="absolute top-1/2 left-0 h-0.5 bg-gradient-to-r from-transparent via-primary to-transparent"
-          />
-        </motion.div>
-      </motion.div>
-
+    <section id="projects" className="py-20 px-4">
       <div className="max-w-7xl mx-auto">
         {/* Section Header */}
-        <div className="text-center mb-8 sm:mb-12">
-          <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white mb-4">
-            Featured Projects
-          </h2>
-          <div className="w-24 h-1 bg-primary mx-auto rounded-full mb-4"></div>
-          <p className="text-base sm:text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto px-4">
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          animate="visible"
+          className="text-center mb-8 sm:mb-12"
+        >
+          <motion.span variants={itemVariants} className="section-eyebrow">
+            <span className="w-1.5 h-1.5 bg-primary rounded-full animate-pulse"></span>
+            Live Work
+          </motion.span>
+          <motion.h2 variants={itemVariants} className="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white mb-4">
+            Featured <span className="title-gradient">Projects</span>
+          </motion.h2>
+          <motion.div variants={itemVariants} className="w-24 h-1 bg-gradient-to-r from-primary to-indigo-500 mx-auto rounded-full mb-4"></motion.div>
+          <motion.p variants={itemVariants} className="text-base sm:text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto px-4">
             A showcase of live client work — 24+ projects delivered, from enterprise ERPs to AI-powered platforms
-          </p>
-        </div>
+          </motion.p>
+        </motion.div>
 
         {/* Projects Grid */}
         <motion.div
@@ -201,7 +168,7 @@ const Projects = () => {
               key={index}
               variants={itemVariants}
               whileHover={{ y: -6 }}
-              className="bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden flex flex-col h-full transition-shadow duration-300 hover:shadow-2xl"
+              className="glass gradient-ring glass-card-hover rounded-2xl shadow-lg overflow-hidden flex flex-col h-full transition-shadow duration-300 hover:shadow-2xl"
             >
               {/* Project Image */}
               <div className="relative h-48 sm:h-56 overflow-hidden">
@@ -308,8 +275,13 @@ const Projects = () => {
         </div>
 
         {/* Call to Action */}
-        <div className="text-center">
-          <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-4 sm:p-6 md:p-8 max-w-2xl mx-auto">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.3 }}
+          className="text-center"
+        >
+          <div className="glass-card glass-card-hover gradient-ring rounded-2xl p-4 sm:p-6 md:p-8 max-w-2xl mx-auto">
             <h3 className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white mb-4">
               Interested in Working Together?
             </h3>
@@ -319,12 +291,12 @@ const Projects = () => {
             </p>
             <a
               href="#contact"
-              className="bg-primary hover:bg-sky-600 text-white px-4 sm:px-6 py-2 sm:py-3 rounded-lg font-semibold transition-colors duration-300 inline-block text-sm sm:text-base"
+              className="bg-primary hover:bg-sky-600 text-white px-4 sm:px-6 py-2 sm:py-3 rounded-xl font-semibold transition-colors duration-300 inline-block text-sm sm:text-base"
             >
               Get In Touch
             </a>
           </div>
-        </div>
+        </motion.div>
       </div>
     </section>
   )

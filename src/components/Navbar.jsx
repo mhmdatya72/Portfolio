@@ -6,6 +6,7 @@ import { safeStorage } from '../utils/storage'
 const Navbar = ({ darkMode, toggleDarkMode }) => {
   const [isOpen, setIsOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
+  const [activeSection, setActiveSection] = useState('home')
 
   useEffect(() => {
     const handleScroll = () => {
@@ -13,6 +14,29 @@ const Navbar = ({ darkMode, toggleDarkMode }) => {
     }
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
+
+  // Scroll-spy: highlight the active nav item
+  useEffect(() => {
+    if (window.location.pathname !== '/') return
+
+    const sections = ['home', 'about', 'education', 'experience', 'skills', 'projects', 'contact']
+
+    const handleSpy = () => {
+      const position = window.scrollY + 140
+      let current = 'home'
+      for (const id of sections) {
+        const el = document.getElementById(id)
+        if (el && el.offsetTop <= position) {
+          current = id
+        }
+      }
+      setActiveSection(current)
+    }
+
+    window.addEventListener('scroll', handleSpy, { passive: true })
+    handleSpy()
+    return () => window.removeEventListener('scroll', handleSpy)
   }, [])
 
   // Close mobile menu when screen size changes to desktop
@@ -90,23 +114,25 @@ const Navbar = ({ darkMode, toggleDarkMode }) => {
   return (
     <>
       <motion.nav
-      initial={{ y: -100 }}
-      animate={{ y: 0 }}
-      transition={{ duration: 0.5 }}
-      className={`mobile-menu-container fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        scrolled
-          ? 'bg-white/90 dark:bg-gray-900/90 backdrop-blur-md shadow-lg'
-          : 'bg-transparent'
-      }`}
-    >
-      <div className="container-custom">
-        <div className="flex items-center justify-between h-16">
+        initial={{ y: -100 }}
+        animate={{ y: 0 }}
+        transition={{ duration: 0.5 }}
+        className="fixed top-0 left-0 right-0 z-50 px-3 sm:px-6 pt-3"
+      >
+        <div
+          className={`max-w-6xl mx-auto rounded-2xl px-3 sm:px-5 transition-all duration-500 ${
+            scrolled
+              ? 'glass shadow-lg shadow-primary/10'
+              : 'bg-transparent'
+          }`}
+        >
+        <div className="flex items-center justify-between h-14 sm:h-16">
           {/* Logo */}
           <motion.div
             whileHover={{ scale: 1.05 }}
             className="flex-shrink-0"
           >
-            <h1 className="text-lg sm:text-xl font-bold text-primary">
+            <h1 className="text-lg sm:text-xl font-bold title-gradient">
               Mohamed Atya Hawash
             </h1>
           </motion.div>
@@ -114,20 +140,37 @@ const Navbar = ({ darkMode, toggleDarkMode }) => {
           {/* Desktop Navigation */}
           <div className="hidden md:block">
             <div className="ml-10 flex items-baseline space-x-8">
-              {navItems.map((item) => (
-                <motion.button
-                  key={item.name}
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  onClick={(e) => {
-                    e.preventDefault()
-                    scrollToSection(item.href)
-                  }}
-                  className="text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-primary px-3 py-2 rounded-md text-sm font-medium transition-colors duration-300"
-                >
-                  {item.name}
-                </motion.button>
-              ))}
+              {navItems.map((item) => {
+                const isActive = activeSection === item.name.toLowerCase()
+                return (
+                  <div key={item.name} className="relative">
+                    <motion.button
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
+                      onClick={(e) => {
+                        e.preventDefault()
+                        scrollToSection(item.href)
+                      }}
+                      className={`px-3 py-2 rounded-md text-sm font-medium transition-colors duration-300 ${
+                        isActive
+                          ? 'text-primary dark:text-primary'
+                          : 'text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-primary'
+                      }`}
+                    >
+                      {item.name}
+                    </motion.button>
+                    {isActive && (
+                      <motion.div
+                        layoutId="nav-active"
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ duration: 0.3 }}
+                        className="absolute -bottom-1 left-3 right-3 h-0.5 bg-gradient-to-r from-primary to-sky-600 rounded-full"
+                      />
+                    )}
+                  </div>
+                )
+              })}
             </div>
           </div>
 
@@ -187,29 +230,36 @@ const Navbar = ({ darkMode, toggleDarkMode }) => {
             }}
             className="px-2 pt-2 pb-3 space-y-1 bg-white/95 dark:bg-gray-900/95 backdrop-blur-md rounded-lg mt-2 shadow-xl border border-gray-200 dark:border-gray-700"
           >
-            {navItems.map((item, index) => (
-              <motion.button
-                key={item.name}
-                initial={{ opacity: 0, x: -20 }}
-                animate={{
-                  opacity: isOpen ? 1 : 0,
-                  x: isOpen ? 0 : -20
-                }}
-                transition={{
-                  duration: 0.3,
-                  delay: isOpen ? index * 0.1 : 0
-                }}
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                onClick={(e) => {
-                  e.preventDefault()
-                  scrollToSection(item.href)
-                }}
-                className="block w-full text-left px-4 py-3 rounded-md text-base font-medium text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-primary hover:bg-primary/10 dark:hover:bg-primary/10 transition-all duration-300"
-              >
-                {item.name}
-              </motion.button>
-            ))}
+            {navItems.map((item, index) => {
+              const isActive = activeSection === item.name.toLowerCase()
+              return (
+                <motion.button
+                  key={item.name}
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{
+                    opacity: isOpen ? 1 : 0,
+                    x: isOpen ? 0 : -20
+                  }}
+                  transition={{
+                    duration: 0.3,
+                    delay: isOpen ? index * 0.1 : 0
+                  }}
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                  onClick={(e) => {
+                    e.preventDefault()
+                    scrollToSection(item.href)
+                  }}
+                  className={`block w-full text-left px-4 py-3 rounded-md text-base font-medium transition-all duration-300 ${
+                    isActive
+                      ? 'text-primary bg-primary/10'
+                      : 'text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-primary hover:bg-primary/10'
+                  }`}
+                >
+                  {item.name}
+                </motion.button>
+              )
+            })}
           </motion.div>
         </motion.div>
       </div>

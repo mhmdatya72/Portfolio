@@ -124,49 +124,7 @@ const Skills = () => {
   )
 
   return (
-    <section id="skills" className="section-padding">
-      {/* Animated Divider - Top of Skills Section */}
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.5, duration: 0.6 }}
-        className="flex justify-center mb-12"
-      >
-        <motion.div
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ delay: 0.7, duration: 0.6 }}
-          className="relative"
-        >
-          {/* Animated Dots */}
-          <div className="flex space-x-2">
-            {[0, 1, 2].map((index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ 
-                  delay: 0.9 + index * 0.2, 
-                  duration: 0.4,
-                  repeat: Infinity,
-                  repeatType: "reverse",
-                  repeatDelay: 1
-                }}
-                className="w-3 h-3 bg-primary rounded-full"
-              />
-            ))}
-          </div>
-          
-          {/* Animated Line */}
-          <motion.div
-            initial={{ width: 0 }}
-            animate={{ width: "100%" }}
-            transition={{ delay: 1.2, duration: 1 }}
-            className="absolute top-1/2 left-0 h-0.5 bg-gradient-to-r from-transparent via-primary to-transparent"
-          />
-        </motion.div>
-      </motion.div>
-
+    <section id="skills" className="py-20 px-4">
       <div className="container-custom">
         <motion.div
           variants={containerVariants}
@@ -176,13 +134,14 @@ const Skills = () => {
         >
           {/* Section Header */}
           <motion.div variants={itemVariants} className="text-center mb-12 md:mb-16">
+            <span className="section-eyebrow">
+              <span className="w-1.5 h-1.5 bg-primary rounded-full animate-pulse"></span>
+              Tech Stack
+            </span>
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">
-              Skills & Expertise
+              Skills & <span className="title-gradient">Expertise</span>
             </h2>
-            <div className="w-24 h-1 bg-primary mx-auto rounded-full mb-4"></div>
-            <p className="text-base sm:text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto px-4">
-              A comprehensive overview of my technical skills and professional capabilities
-            </p>
+            <div className="w-24 h-1 bg-gradient-to-r from-primary to-indigo-500 mx-auto rounded-full mb-4"></div>
           </motion.div>
 
           {/* Skills Grid */}
@@ -192,7 +151,7 @@ const Skills = () => {
                 key={categoryIndex}
                 variants={itemVariants}
                 whileHover={{ scale: 1.02 }}
-                className="card p-4 sm:p-6 md:p-8"
+                className="glass-card glass-card-hover gradient-ring p-4 sm:p-6 md:p-8"
               >
                 <div className="flex items-center gap-3 mb-6">
                   {category.icon}
@@ -215,7 +174,7 @@ const Skills = () => {
             variants={itemVariants}
             className="mt-12 md:mt-16 text-center"
           >
-            <div className="card p-4 sm:p-6 md:p-8 max-w-4xl mx-auto">
+            <div className="glass-card glass-card-hover gradient-ring p-4 sm:p-6 md:p-8 max-w-4xl mx-auto">
               <h3 className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white mb-4">
                 Continuous Learning & Growth
               </h3>

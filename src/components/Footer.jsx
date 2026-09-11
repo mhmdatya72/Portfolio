@@ -84,13 +84,15 @@ const Footer = () => {
   }
 
   return (
-    <footer className="bg-gray-900 dark:bg-black text-white">
+    <footer className="relative bg-gray-900 dark:bg-black text-white mt-8">
+      {/* Gradient top border */}
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary to-transparent"></div>
       <div className="container-custom">
         <div className="py-12">
           <div className="grid md:grid-cols-3 gap-8">
             {/* Brand Section */}
             <div className="space-y-4">
-              <h3 className="text-2xl font-bold text-primary">
+              <h3 className="text-2xl font-bold title-gradient">
                 Mohamed Atya Hawash
               </h3>
               <p className="text-gray-400 leading-relaxed">
@@ -148,7 +150,7 @@ const Footer = () => {
           <div className="border-t border-gray-800 mt-12 pt-8">
             <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
               <div className="flex items-center space-x-2 text-gray-400">
-                <span>© 2024 Mohamed Atya Hawash. Made with</span>
+                <span>© {new Date().getFullYear()} Mohamed Atya Hawash. Made with</span>
                 <motion.span
                   animate={{ scale: [1, 1.2, 1] }}
                   transition={{ duration: 1, repeat: Infinity }}
