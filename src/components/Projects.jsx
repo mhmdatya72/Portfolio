@@ -29,72 +29,100 @@ const Projects = () => {
 
   const projects = [
     {
-      title: 'Educhain Learning Management System',
-      description: 'Developed and customized the Educhain Learning Management System as a SaaS platform using Laravel and Blade templating engine. Built dynamic interfaces for managing courses, users, and blockchain-based certificates with full CRUD operations and optimized performance.',
-      image: 'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80',
-      technologies: ['Laravel', 'Blade Templates', 'MySQL', 'AJAX', 'jQuery', 'Bootstrap', 'SaaS'],
+      title: 'Cordiana ERP System',
+      description: 'All-in-One Enterprise Business Management Platform. A comprehensive Cloud ERP solution featuring Sales CRM, POS, HR & Payroll, Financial Accounting, and Electronic Invoicing.',
+      image: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80',
+      technologies: ['Laravel', 'PHP 8+', 'MySQL', 'Vue.js', 'Bootstrap', 'RESTful APIs'],
       features: [
-        'Dynamic course management system',
-        'Blockchain-based certificates',
-        'Secure user authentication & access control',
-        'AJAX-powered seamless interactions',
-        'Optimized database performance'
-      ],
-      github: 'https://github.com/mhmdatya72/educhain-lms',
-      demo: 'https://educhain.inomhub.com/',
-      status: 'Live',
-      icon: <FaUsers className="text-primary" size={32} />
-    },
-    {
-      title: 'Out Seller CRM',
-      description: 'Comprehensive CRM system with advanced lead scoring, segmentation, and automated workflows to help sales teams manage and convert leads more effectively.',
-      image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80',
-      technologies: ['Laravel 9', 'Bootstrap', 'MySQL', 'Chart.js', 'Mail System'],
-      features: [
-        'Lead scoring and segmentation',
-        'Automated email campaigns',
-        'Sales pipeline management',
-        'Analytics and reporting',
-        'Team collaboration tools'
+        'Cloud ERP: Sales CRM, POS, HR & Payroll, Financial Accounting, E-Invoicing',
+        'Modular Eloquent database schemas and RESTful API endpoints',
+        'Role-Based Access Control (RBAC) for secure multi-tenant operations',
+        'Real-time reporting workflows and seamless data integration'
       ],
       github: 'https://github.com/mhmdatya72',
-      demo: 'https://outseller.tech/',
+      demo: 'https://cordiana-sys.com/',
       status: 'Live',
       icon: <FaDatabase className="text-primary" size={32} />
     },
     {
-      title: 'Kemework Marketplace',
-      description: 'Freelance marketplace backend optimization project that improved API performance by 30% and successfully handled 1,000+ concurrent users with enhanced security measures.',
-      image: 'https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80',
-      technologies: ['Laravel 8', 'Redis', 'MySQL', 'API Optimization', 'Load Balancing'],
+      title: 'One Step Industrial',
+      description: 'B2B E-Commerce & Equipment Supply Platform. A scalable B2B industrial marketplace supporting multi-category product hierarchies and dynamic machinery quote requests.',
+      image: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80',
+      technologies: ['Laravel', 'MySQL', 'Vue.js', 'Bootstrap', 'RESTful APIs'],
       features: [
-        'High-performance API endpoints',
-        'Redis caching implementation',
-        'Database query optimization',
-        'Load balancing setup',
-        'Security enhancements'
+        'Scalable B2B industrial marketplace with multi-category hierarchies',
+        'Dynamic machinery quote requests',
+        'Optimized search across 1,000+ SKU items (+35% API performance)',
+        'Custom back-office dashboards for sales and order tracking'
       ],
       github: 'https://github.com/mhmdatya72',
-      demo: 'http://kemework.com/',
+      demo: 'https://onestepcorp.com/',
+      status: 'Live',
+      icon: <FaGlobe className="text-primary" size={32} />
+    },
+    {
+      title: 'Tour Egypt Club',
+      description: 'Travel & Tourism Booking Engine. An interactive travel engine featuring dynamic tour itineraries, transport reservations, and automated quote systems.',
+      image: 'https://images.unsplash.com/photo-1473448912268-2022ce9509d8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80',
+      technologies: ['Laravel', 'MySQL', 'Vue.js', 'Bootstrap'],
+      features: [
+        'Dynamic tour itineraries and transport reservations',
+        'Automated quote systems',
+        'Multi-category filtering mechanisms',
+        'Optimized UI components boosting engagement and conversions'
+      ],
+      github: 'https://github.com/mhmdatya72',
+      demo: 'https://touregyptclub.com/',
+      status: 'Live',
+      icon: <FaVuejs className="text-primary" size={32} />
+    },
+    {
+      title: 'Al Manarat Al Munira',
+      description: 'Heavy Equipment & Crane Fleet Management Platform. An enterprise web solution for industrial equipment hire, service management, and engineering project tracking.',
+      image: 'https://images.unsplash.com/photo-1503387762-592deb58ef4e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80',
+      technologies: ['Laravel', 'MySQL', 'Vue.js', 'Bootstrap'],
+      features: [
+        'Enterprise web solution for equipment hire and service management',
+        'Secure backend workflows for service requests',
+        'Automated client notifications and quote handling',
+        'Engineering project tracking'
+      ],
+      github: 'https://github.com/mhmdatya72',
+      demo: 'https://almanratalmonerah.com/',
       status: 'Live',
       icon: <FaLaravel className="text-primary" size={32} />
     },
     {
-      title: 'Kemedar — Real Estate Platform',
-      description: 'Kemedar is a modern PropTech (Property Technology) platform designed to digitalize and simplify the real estate market. It provides a unified ecosystem for property management, buying, selling, renting, and related services using Microservices Architecture for high performance and scalability.',
-      image: 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80',
-      technologies: ['Laravel', 'Blade Templates', 'MongoDB', 'Microservices', 'Docker', 'Nginx', 'JWT'],
+      title: 'Taggz App',
+      description: 'AI-Powered Event Photo Matching Platform. Backend APIs and media processing workflows for an AI-driven event platform that matches and distributes event photos via facial recognition.',
+      image: 'https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80',
+      technologies: ['Laravel', 'PHP 8+', 'MySQL', 'RESTful APIs', 'Media Processing'],
       features: [
-        'Microservices Architecture for scalability',
-        'MongoDB for complex property data',
-        'API Gateway & JWT Authentication',
-        '40% improved response times',
-        'Docker containerized deployment'
+        'AI facial recognition photo matching and distribution',
+        'Multi-role architectures for Hosts, Photographers, and Attendees',
+        'Batch file uploads and QR invitations',
+        'Real-time gallery sync'
       ],
-      github: 'https://github.com/mhmdatya72/kemedar-platform',
-      demo: 'http://kemedar.com/',
+      github: 'https://github.com/mhmdatya72',
+      demo: 'https://taggz.app/',
       status: 'Live',
-      icon: <FaVuejs className="text-primary" size={32} />
+      icon: <FaUsers className="text-primary" size={32} />
+    },
+    {
+      title: 'Al-Nasser Group Portal',
+      description: 'Enterprise Retail Operations & Delivery Dashboard. An enterprise internal portal for Al-Nasser (leading Kuwaiti retail brand) to manage logistics, delivery operations, and multi-store workflows.',
+      image: '/alnasser-brand.jpg',
+      technologies: ['Laravel', 'MySQL', 'Vue.js', 'Bootstrap'],
+      features: [
+        'Enterprise portal for logistics and delivery operations',
+        'Multi-store workflows and operational dashboards',
+        'Role-based access control (RBAC)',
+        'Multi-tenant security layers and optimized reporting'
+      ],
+      github: 'https://github.com/mhmdatya72',
+      demo: 'https://alnasser.themok.company/',
+      status: 'Live',
+      icon: <FaDatabase className="text-primary" size={32} />
     }
   ]
 

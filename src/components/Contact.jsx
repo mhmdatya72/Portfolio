@@ -124,7 +124,7 @@ const Contact = () => {
     {
       icon: <FaLinkedin size={24} />,
       label: 'LinkedIn',
-      url: 'https://www.linkedin.com/in/mohamed-atya-hawash-21853b344?utm_source=share_via&utm_content=profile&utm_medium=member_android',
+      url: 'https://www.linkedin.com/in/mohamed-atya-hawash-30a94a274',
       color: 'hover:text-blue-600'
     },
     {
@@ -195,8 +195,7 @@ const Contact = () => {
         <motion.div
           variants={containerVariants}
           initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.3 }}
+          animate="visible"
           className="max-w-6xl mx-auto"
         >
           {/* Section Header */}

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { initEmailJS } from './config/emailjs'
+import { safeStorage } from './utils/storage'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
 import About from './components/About'
@@ -19,7 +20,7 @@ function App() {
 
   useEffect(() => {
     // Check for saved theme preference or default to dark mode
-    const savedTheme = localStorage.getItem('theme')
+    const savedTheme = safeStorage.getItem('theme')
     if (savedTheme === 'light') {
       setDarkMode(false)
     } else {
@@ -37,41 +38,43 @@ function App() {
     } else {
       document.documentElement.classList.remove('dark')
     }
-    localStorage.setItem('theme', darkMode ? 'dark' : 'light')
+    safeStorage.setItem('theme', darkMode ? 'dark' : 'light')
   }, [darkMode])
 
   // Handle scrolling to section after page load
   useEffect(() => {
-    const scrollToSection = sessionStorage.getItem('scrollToSection')
+    const scrollToSection = safeStorage.sGet('scrollToSection')
     const urlHash = window.location.hash
-    
+
     if (scrollToSection || urlHash) {
       const targetSection = scrollToSection || urlHash
-      
+
       // Clear the stored section
       if (scrollToSection) {
-        sessionStorage.removeItem('scrollToSection')
+        safeStorage.sRemove('scrollToSection')
       }
-      
-      // Wait for components to render, then scroll
+
+      let scrollTimeout
+
       const scrollToTarget = () => {
         const element = document.querySelector(targetSection)
         if (element) {
           const navbarHeight = 64 // h-16 = 64px
           const elementPosition = element.offsetTop - navbarHeight
-          
+
           window.scrollTo({
             top: elementPosition,
             behavior: 'smooth'
           })
         } else {
           // If element not found, try again after a short delay
-          setTimeout(scrollToTarget, 100)
+          scrollTimeout = setTimeout(scrollToTarget, 100)
         }
       }
-      
+
       // Start trying to scroll after a delay
-      setTimeout(scrollToTarget, 800)
+      scrollTimeout = setTimeout(scrollToTarget, 800)
+      return () => clearTimeout(scrollTimeout)
     }
   }, [])
 
@@ -102,8 +105,12 @@ function App() {
     // Only run on home page
     if (window.location.pathname === '/') {
       window.addEventListener('scroll', handleScroll)
-      // Run once on mount
-      handleScroll()
+      // Only run once on mount if there is no incoming section hash,
+      // so the initial URL is not overwritten before it can be scrolled to
+      const currentHash = window.location.hash
+      if (!currentHash || currentHash === '#home') {
+        handleScroll()
+      }
     }
 
     return () => {

@@ -10,7 +10,7 @@ const Footer = () => {
   const socialLinks = [
     {
       icon: <FaLinkedin size={20} />,
-      url: 'https://www.linkedin.com/in/mohamed-atya-hawash-21853b344?utm_source=share_via&utm_content=profile&utm_medium=member_android',
+      url: 'https://www.linkedin.com/in/mohamed-atya-hawash-30a94a274',
       label: 'LinkedIn'
     },
     {

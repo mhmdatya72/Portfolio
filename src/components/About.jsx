@@ -30,7 +30,7 @@ const About = () => {
     {
       icon: <FaRocket className="text-primary" size={24} />,
       title: 'Performance Optimization',
-      description: 'Reduced API response times by 30% at Kemework',
+      description: 'Reduced API response times by 30% while serving 1,000+ concurrent users',
     },
     {
       icon: <FaUsers className="text-primary" size={24} />,
@@ -97,8 +97,7 @@ const About = () => {
         <motion.div
           variants={containerVariants}
           initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.3 }}
+          animate="visible"
           className="max-w-6xl mx-auto"
         >
           {/* Section Header */}
@@ -114,16 +113,17 @@ const About = () => {
               {/* Content - Left Side */}
               <motion.div variants={itemVariants} className="space-y-6">
                 <p className="text-lg text-gray-600 dark:text-gray-400 leading-relaxed">
-                  I'm a passionate Full Stack Web Developer with over 3 years of experience 
-                  specializing in Laravel and modern web technologies. I love creating 
-                  efficient, scalable, and user-friendly web applications that solve real-world problems.
+                  I'm a Software Engineering Team Lead &amp; Senior Full Stack Laravel Developer with 
+                  over <span className="text-primary font-semibold">5+ years</span> of experience 
+                  architecting and scaling web applications, Cloud ERPs, and SaaS platforms using 
+                  PHP 8+, Laravel, MySQL, Vue.js, and RESTful APIs.
                 </p>
                 
                 <p className="text-lg text-gray-600 dark:text-gray-400 leading-relaxed">
-                  I've worked on multiple Laravel-based platforms improving performance, security, 
-                  and scalability. At Kemework, I optimized APIs serving 1,000+ concurrent users, 
-                  reducing response times by 30%. My expertise spans from backend API development 
-                  to frontend user interfaces, ensuring seamless integration and optimal user experience.
+                  I lead engineering teams and manage full software development lifecycles, with a proven 
+                  track record optimizing backend performance — reducing API response times by 30% and 
+                  supporting 1,000+ concurrent users. My expertise spans system security, database design, 
+                  and delivering complex B2B/Enterprise solutions in Agile environments.
                 </p>
 
                 <p className="text-lg text-gray-600 dark:text-gray-400 leading-relaxed">
@@ -138,12 +138,12 @@ const About = () => {
                 <div>
                   <div className="grid grid-cols-2 gap-6">
                     <div className="text-center p-4 bg-white dark:bg-gray-800 rounded-xl shadow-md">
-                      <div className="text-3xl font-bold text-primary mb-2">3+</div>
+                      <div className="text-3xl font-bold text-primary mb-2">5+</div>
                       <div className="text-gray-600 dark:text-gray-400 text-sm">Years Experience</div>
                     </div>
                     <div className="text-center p-4 bg-white dark:bg-gray-800 rounded-xl shadow-md">
-                      <div className="text-3xl font-bold text-primary mb-2">15+</div>
-                      <div className="text-gray-600 dark:text-gray-400 text-sm">Projects Completed</div>
+                      <div className="text-3xl font-bold text-primary mb-2">20+</div>
+                      <div className="text-gray-600 dark:text-gray-400 text-sm">Web Applications</div>
                     </div>
                     <div className="text-center p-4 bg-white dark:bg-gray-800 rounded-xl shadow-md">
                       <div className="text-3xl font-bold text-primary mb-2">1000+</div>

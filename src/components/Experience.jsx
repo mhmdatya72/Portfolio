@@ -28,64 +28,89 @@ const Experience = () => {
 
   const experiences = [
     {
-      title: "Full Stack Laravel Developer",
-      company: "Kemedar",
-      period: "2/2024 - Present",
+      title: "Software Engineering Team Lead / Senior Full Stack Developer",
+      company: "Cord Digital",
+      period: "Jan 2022 – Present",
       type: "Full-time",
-      description: "Led backend development for a comprehensive real estate ecosystem using Laravel & Bootstrap. Working on Kemedar Proptech Super App - the first of its kind with the Super App system in the field of real estate technology.",
+      description: "Head of the Software Engineering Department, driving technical architecture decisions, overseeing code reviews, and mentoring the development team across all active projects.",
       achievements: [
-        "Optimized database queries (−30% response time)",
-        "Handled +1,000 concurrent users",
-        "Improved platform scalability",
-        "Developed multiple integrated systems (Kemework, Kemetro, Kemereit, etc.)"
+        "Developed and maintained 20+ web applications using Laravel, PHP, MySQL, Vue.js, and Bootstrap",
+        "Engineered custom ERP systems, dashboards, RBAC, inventory, sales, and financial reporting workflows",
+        "Managed the full software development lifecycle (SDLC) — from requirements analysis to deployment",
+        "Optimized database indexing and Eloquent queries for high-performing, scalable solutions"
       ],
-      website: "https://kemedar.com/",
       icon: <FaRocket className="text-primary" size={24} />,
       color: "bg-blue-500"
     },
     {
-      title: "Laravel Developer", 
-      company: "Inom Tecks\\inomhub",
-      period: "4/2024 - Present",
+      title: "Full Stack Laravel Developer", 
+      company: "SEO Wolves",
+      period: "Jul 2026 – Present",
       type: "Part-time",
-      description: "Built CRM systems for multiple clients, integrated APIs, improved reliability. Working on mobile app development, custom software solutions, and digital marketing services.",
+      description: "Developing high-performance, SEO-friendly web applications, custom CMS solutions, and digital marketing tools using Laravel, PHP, and JavaScript.",
       achievements: [
-        "Built CRM systems for multiple clients",
-        "Integrated various APIs",
-        "Improved system reliability by 60%",
-        "Developed mobile apps and custom software solutions"
+        "Improved core web vitals and database performance (up to -30% page load times)",
+        "Built scalable RESTful APIs for client platforms",
+        "Integrated automated analytics tools for reporting and performance tracking"
       ],
-      website: "https://inomhub.com/",
-      icon: <FaCode className="text-primary" size={24} />,
+      icon: <FaChartLine className="text-primary" size={24} />,
       color: "bg-green-500"
+    },
+    {
+      title: "Senior Full Stack Laravel Developer",
+      company: "The Mok Company",
+      period: "Jan 2024 – Jun 2026",
+      type: "Part-time",
+      description: "Architected and maintained enterprise-grade web applications, SaaS platforms, and internal dashboards, including Al-Nasser Group Portal and Taggz AI App.",
+      achievements: [
+        "Designed modular RESTful APIs and Eloquent schemas supporting RBAC and real-time analytics",
+        "Optimized backend architectures, database queries, and server-side caching",
+        "Ensured low latency and high availability for high-traffic applications"
+      ],
+      icon: <FaCode className="text-primary" size={24} />,
+      color: "bg-indigo-500"
+    },
+    {
+      title: "Full Stack Developer",
+      company: "Kemeder / Kemework",
+      period: "Jun 2021 – Dec 2021",
+      type: "Contract",
+      description: "Led the backend development of the Kemework freelance marketplace, delivering 20+ core features with Laravel and Bootstrap.",
+      achievements: [
+        "Implemented Redis/Laravel caching, reducing API response times by 30% while serving 1,000+ concurrent users",
+        "Integrated real-time broadcasting notifications and payment gateways (+35% success rate, +22% engagement)",
+        "Revamped backend architecture for improved performance and reliability"
+      ],
+      icon: <FaRocket className="text-primary" size={24} />,
+      color: "bg-purple-500"
+    },
+    {
+      title: "Full Stack Developer",
+      company: "Inom Tecks",
+      period: "Jan 2020 – May 2021",
+      type: "Full-time",
+      description: "Built core CRM modules and improved system reliability for multiple client projects.",
+      achievements: [
+        "Built core CRM modules for 5+ client projects, reducing sales cycles by 15%",
+        "Achieved 95% client satisfaction rate",
+        "Improved reliability via CI/CD pipelines, PHPUnit testing, and API versioning (-60% bugs)"
+      ],
+      icon: <FaUsers className="text-primary" size={24} />,
+      color: "bg-orange-500"
     },
     {
       title: "Freelance Web Developer",
       company: "Self-Employed",
-      period: "2022 - Present",
+      period: "2019 – Present",
       type: "Freelance",
-      description: "Delivered SEO-optimized Laravel websites with improved performance metrics.",
+      description: "Delivered SEO-optimized web applications and e-commerce portals for clients, managing end-to-end project deliveries.",
       achievements: [
-        "↑40% user retention rate",
-        "↓30% page load time",
-        "SEO-optimized websites"
+        "Built 5+ SEO-optimized web applications and e-commerce portals (+40% user retention)",
+        "Improved overall speed performance by 30%",
+        "Integrated analytics and payment solutions (+20% conversions and delivery speed)"
       ],
       icon: <FaChartLine className="text-primary" size={24} />,
-      color: "bg-purple-500"
-    },
-    {
-      title: "Intern",
-      company: "Damanhour University PMU",
-      period: "2023",
-      type: "Internship",
-      description: "Worked on 3 Laravel-based university systems improving accessibility.",
-      achievements: [
-        "Worked on 3 university systems",
-        "Improved accessibility (+25%)",
-        "Laravel-based development"
-      ],
-      icon: <FaUsers className="text-primary" size={24} />,
-      color: "bg-orange-500"
+      color: "bg-cyan-500"
     }
   ]
 
@@ -137,8 +162,7 @@ const Experience = () => {
         <motion.div
           variants={containerVariants}
           initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.3 }}
+          animate="visible"
           className="max-w-6xl mx-auto"
         >
           {/* Section Header */}
@@ -204,6 +228,7 @@ const Experience = () => {
                             </div>
                             <span className={`inline-block px-2 py-1 text-xs font-medium rounded-full ${
                               exp.type === 'Full-time' ? 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200' :
+                              exp.type === 'Part-time' ? 'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200' :
                               exp.type === 'Freelance' ? 'bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-200' :
                               'bg-orange-100 text-orange-800 dark:bg-orange-900 dark:text-orange-200'
                             }`}>
@@ -227,7 +252,7 @@ const Experience = () => {
                               <motion.li
                                 key={achIndex}
                                 initial={{ opacity: 0, x: -10 }}
-                                whileInView={{ opacity: 1, x: 0 }}
+                                animate={{ opacity: 1, x: 0 }}
                                 transition={{ delay: achIndex * 0.1, duration: 0.3 }}
                                 className="flex items-start text-sm text-gray-600 dark:text-gray-400"
                               >

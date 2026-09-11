@@ -9,14 +9,13 @@ import {
   FaCss3Alt, 
   FaBootstrap, 
   FaGitAlt, 
-  FaFigma, 
-  FaTrello,
   FaDatabase,
   FaServer,
   FaCode,
   FaUsers,
   FaLightbulb,
-  FaBug
+  FaBug,
+  FaShieldAlt
 } from 'react-icons/fa'
 
 const Skills = () => {
@@ -52,8 +51,8 @@ const Skills = () => {
         { name: 'Laravel', icon: <FaLaravel className="text-red-500" size={20} />, level: 99 },
         { name: 'MySQL', icon: <FaDatabase className="text-blue-500" size={20} />, level: 99 },
         { name: 'MongoDB', icon: <FaDatabase className="text-green-500" size={20} />, level: 95 },
-        { name: 'Microservices', icon: <FaServer className="text-indigo-500" size={20} />, level: 94 },
-        { name: 'REST APIs', icon: <FaCode className="text-green-500" size={20} />, level: 99 },
+        { name: 'RESTful APIs', icon: <FaCode className="text-green-500" size={20} />, level: 99 },
+        { name: 'Composer', icon: <FaCode className="text-indigo-500" size={20} />, level: 96 },
       ]
     },
     {
@@ -62,32 +61,44 @@ const Skills = () => {
       skills: [
         { name: 'HTML5', icon: <FaHtml5 className="text-orange-500" size={20} />, level: 99 },
         { name: 'CSS3', icon: <FaCss3Alt className="text-blue-500" size={20} />, level: 99 },
+        { name: 'Sass (SCSS)', icon: <FaCss3Alt className="text-pink-500" size={20} />, level: 95 },
         { name: 'JavaScript ES6+', icon: <FaJs className="text-yellow-500" size={20} />, level: 99 },
         { name: 'Vue.js', icon: <FaVuejs className="text-green-500" size={20} />, level: 95 },
         { name: 'Bootstrap', icon: <FaBootstrap className="text-purple-500" size={20} />, level: 99 },
+        { name: 'Blade Templating', icon: <FaCode className="text-cyan-500" size={20} />, level: 97 },
       ]
     },
     {
-      title: 'Tools & Technologies',
+      title: 'API Integration & Testing',
+      icon: <FaServer className="text-primary" size={24} />,
+      skills: [
+        { name: 'Postman', icon: <FaCode className="text-orange-500" size={20} />, level: 96 },
+        { name: 'JSON / XML', icon: <FaCode className="text-blue-500" size={20} />, level: 97 },
+        { name: 'Laravel API Resources', icon: <FaLaravel className="text-red-500" size={20} />, level: 97 },
+        { name: 'JWT / Sanctum', icon: <FaShieldAlt className="text-green-500" size={20} />, level: 96 },
+        { name: 'PHPUnit', icon: <FaBug className="text-yellow-500" size={20} />, level: 95 },
+        { name: 'Laravel Dusk', icon: <FaBug className="text-red-500" size={20} />, level: 93 },
+      ]
+    },
+    {
+      title: 'Tools & Deployment',
       icon: <FaGitAlt className="text-primary" size={24} />,
       skills: [
-        { name: 'Git', icon: <FaGitAlt className="text-orange-500" size={20} />, level: 99 },
-        { name: 'Postman', icon: <FaCode className="text-orange-500" size={20} />, level: 96 },
-        { name: 'Figma', icon: <FaFigma className="text-pink-500" size={20} />, level: 95 },
-        { name: 'Trello', icon: <FaTrello className="text-blue-500" size={20} />, level: 96 },
-        { name: 'cPanel', icon: <FaServer className="text-gray-500" size={20} />, level: 99 },
-        { name: 'Hostinger', icon: <FaServer className="text-purple-500" size={20} />, level: 96 },
-        { name: 'CloudPanel', icon: <FaServer className="text-cyan-500" size={20} />, level: 95 },
+        { name: 'Git / GitHub / GitLab', icon: <FaGitAlt className="text-orange-500" size={20} />, level: 99 },
+        { name: 'cPanel / WHM', icon: <FaServer className="text-gray-500" size={20} />, level: 99 },
+        { name: 'AWS / VPS / GoDaddy', icon: <FaServer className="text-purple-500" size={20} />, level: 96 },
+        { name: 'SSL & Domain Linking', icon: <FaShieldAlt className="text-cyan-500" size={20} />, level: 97 },
+        { name: 'AWS S3 / Backblaze B2', icon: <FaDatabase className="text-blue-500" size={20} />, level: 94 },
       ]
     },
     {
       title: 'Soft Skills',
       icon: <FaUsers className="text-primary" size={24} />,
       skills: [
-        { name: 'Teamwork', icon: <FaUsers className="text-blue-500" size={20} />, level: 99 },
-        { name: 'Communication', icon: <FaCode className="text-green-500" size={20} />, level: 99 },
-        { name: 'Problem Solving', icon: <FaLightbulb className="text-yellow-500" size={20} />, level: 99 },
-        { name: 'Debugging', icon: <FaBug className="text-red-500" size={20} />, level: 99 },
+        { name: 'Advanced Problem Solving & Bug Debugging', icon: <FaLightbulb className="text-yellow-500" size={20} />, level: 99 },
+        { name: 'Agile Leadership & Team Collaboration', icon: <FaUsers className="text-blue-500" size={20} />, level: 98 },
+        { name: 'Technical Communication & Stakeholder Alignment', icon: <FaCode className="text-green-500" size={20} />, level: 97 },
+        { name: 'Adaptability & Rapid Onboarding', icon: <FaBug className="text-red-500" size={20} />, level: 97 },
       ]
     }
   ]
@@ -104,8 +115,7 @@ const Skills = () => {
       <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2">
         <motion.div
           initial={{ width: 0 }}
-          whileInView={{ width: `${level}%` }}
-          viewport={{ once: true }}
+          animate={{ width: `${level}%` }}
           transition={{ duration: 1, ease: 'easeOut' }}
           className="bg-gradient-to-r from-primary to-sky-600 h-2 rounded-full"
         />
@@ -161,8 +171,7 @@ const Skills = () => {
         <motion.div
           variants={containerVariants}
           initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.3 }}
+          animate="visible"
           className="max-w-6xl mx-auto"
         >
           {/* Section Header */}

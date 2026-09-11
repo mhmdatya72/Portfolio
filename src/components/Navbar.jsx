@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { FaSun, FaMoon, FaBars, FaTimes } from 'react-icons/fa'
+import { safeStorage } from '../utils/storage'
 
 const Navbar = ({ darkMode, toggleDarkMode }) => {
   const [isOpen, setIsOpen] = useState(false)
@@ -55,7 +56,7 @@ const Navbar = ({ darkMode, toggleDarkMode }) => {
     if (isProjectsPage && href.startsWith('#')) {
       // If we're on projects page and trying to go to other sections, navigate to home with section
       // Store the target section in sessionStorage for after page load
-      sessionStorage.setItem('scrollToSection', href)
+      safeStorage.sSet('scrollToSection', href)
       // Also update the URL hash for better reliability
       window.location.href = `/${href}`
       return
