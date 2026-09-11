@@ -1,7 +1,7 @@
 import React from 'react'
 import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
-import { FaGithub, FaExternalLinkAlt, FaLaravel, FaVuejs, FaDatabase, FaUsers, FaArrowRight, FaGlobe } from 'react-icons/fa'
+import { FaExternalLinkAlt, FaLaravel, FaVuejs, FaDatabase, FaUsers, FaArrowRight, FaGlobe } from 'react-icons/fa'
 
 const Projects = () => {
   const containerVariants = {
@@ -239,15 +239,6 @@ const Projects = () => {
 
                 {/* Action Buttons - Fixed at bottom */}
                 <div className="flex gap-2 sm:gap-3 mt-auto">
-                <a
-                  href={project.github}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                    className="flex-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-primary hover:text-white px-3 sm:px-4 py-2 rounded-lg text-center text-xs sm:text-sm font-medium transition-colors duration-300"
-                >
-                    <FaGithub className="inline mr-1 sm:mr-2" size={12} />
-                  Code
-                </a>
                 <a
                   href={project.demo}
                   target="_blank"

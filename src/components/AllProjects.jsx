@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
-import { FaGithub, FaExternalLinkAlt, FaLaravel, FaVuejs, FaDatabase, FaUsers, FaGlobe, FaArrowLeft } from 'react-icons/fa'
+import { FaExternalLinkAlt, FaLaravel, FaVuejs, FaDatabase, FaUsers, FaGlobe, FaArrowLeft } from 'react-icons/fa'
 import { Link } from 'react-router-dom'
 import Navbar from './Navbar'
 import Footer from './Footer'
@@ -571,15 +571,6 @@ const AllProjects = () => {
 
         {/* Action Buttons - Fixed at bottom */}
         <div className="flex gap-4 mt-auto">
-          <a
-            href={project.github}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-primary hover:text-white px-6 py-3 rounded-lg text-center font-medium transition-colors duration-300 flex items-center justify-center"
-          >
-            <FaGithub className="mr-2" size={16} />
-            View Code
-          </a>
           {project.demo !== '#' ? (
             <a
               href={project.demo}
