@@ -6,7 +6,8 @@ const roles = [
   'Full Stack Web Developer',
   'Laravel & Vue.js Architect',
   'AI-Powered Platform Builder',
-  'Software Team Lead',
+  'Digital Product Specialist',
+  'Scalable Web Solutions Expert',
 ]
 
 const TypeWriter = () => {
@@ -206,7 +207,8 @@ const Hero = () => {
                 <span className="text-primary font-semibold">5+ years</span> of expertise in modern web development.
               </p>
               <p className="text-base text-gray-500 dark:text-gray-500 leading-relaxed">
-                Specializing in scalable Laravel applications, dynamic Vue.js interfaces, and robust database solutions.
+                I design and ship AI-powered SaaS platforms, enterprise Laravel backends, and real-time applications —
+                from strategy to scalable, production-ready products.
               </p>
             </motion.div>
 
