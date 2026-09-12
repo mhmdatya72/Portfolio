@@ -5,9 +5,9 @@ import { FaDownload, FaEye, FaGithub, FaLinkedin, FaFacebook, FaWhatsapp, FaRobo
 const roles = [
   'Full Stack Web Developer',
   'Laravel & Vue.js Architect',
-  'AI-Powered Platform Builder',
+  'AI-Powered SaaS Builder',
+  'Enterprise Solution Consultant',
   'Digital Product Specialist',
-  'Scalable Web Solutions Expert',
 ]
 
 const TypeWriter = () => {
