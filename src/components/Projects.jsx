@@ -168,7 +168,7 @@ const Projects = () => {
               key={index}
               variants={itemVariants}
               whileHover={{ y: -6 }}
-              className="glass gradient-ring glass-card-hover rounded-2xl shadow-lg overflow-hidden flex flex-col h-full transition-shadow duration-300 hover:shadow-2xl"
+              className="glass gradient-ring glass-card-hover shine-sweep rounded-2xl shadow-lg overflow-hidden flex flex-col h-full transition-shadow duration-300 hover:shadow-2xl"
             >
               {/* Project Image */}
               <div className="relative h-48 sm:h-56 overflow-hidden">

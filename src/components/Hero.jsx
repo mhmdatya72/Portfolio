@@ -246,7 +246,7 @@ const Hero = () => {
               <motion.a
                 whileHover={{ scale: 1.1, y: -2 }}
                 whileTap={{ scale: 0.95 }}
-                href="https://www.linkedin.com/in/mohamed-atya-hawash-30a94a274"
+                href="https://www.linkedin.com/in/mohamed-atya-hawash-21853b344"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group p-3 bg-white dark:bg-gray-800 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 text-gray-600 dark:text-gray-400 hover:text-primary"

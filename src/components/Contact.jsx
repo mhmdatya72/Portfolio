@@ -124,7 +124,7 @@ const Contact = () => {
     {
       icon: <FaLinkedin size={24} />,
       label: 'LinkedIn',
-      url: 'https://www.linkedin.com/in/mohamed-atya-hawash-30a94a274',
+      url: 'https://www.linkedin.com/in/mohamed-atya-hawash-21853b344',
       color: 'hover:text-blue-600'
     },
     {
