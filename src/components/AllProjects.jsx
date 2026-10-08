@@ -61,6 +61,22 @@ const AllProjects = () => {
 
   const projects = [
     {
+      title: 'Eleman EG — Al Eman Contracting',
+      description: 'Arabic-first company website for Al Eman, presenting its general contracting, construction, and surveying services across Egypt.',
+      image: '/project-eleman-eg.png',
+      technologies: ['Arabic RTL', 'English', 'SEO'],
+      features: [
+        'Showcases general contracting and surveying services',
+        'Arabic and English language versions',
+        'Search-friendly metadata and structured business information'
+      ],
+      github: 'https://github.com/mhmdatya72',
+      demo: 'https://elemaneg.com/',
+      status: 'Live',
+      country: 'Egypt',
+      icon: <FaGlobe className="text-primary" size={32} />
+    },
+    {
       title: 'Cordiana ERP System',
       description: 'All-in-One Enterprise Business Management Platform. A comprehensive Cloud ERP solution featuring Sales CRM, POS, HR & Payroll, Financial Accounting, and Electronic Invoicing with modular Eloquent schemas and RESTful API endpoints.',
       image: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80',
@@ -623,7 +639,8 @@ const AllProjects = () => {
         <motion.div
           variants={containerVariants}
           initial="hidden"
-          animate="visible"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.1 }}
           className="grid grid-cols-1 lg:grid-cols-2 gap-8"
         >
           {projects.map((project, index) => (
@@ -648,7 +665,8 @@ const AllProjects = () => {
         <motion.div
           variants={containerVariants}
           initial="hidden"
-          animate="visible"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.1 }}
           className="grid grid-cols-1 lg:grid-cols-2 gap-8"
         >
           {additionalProjects.map((project, index) => (
@@ -673,7 +691,8 @@ const AllProjects = () => {
         <motion.div
           variants={containerVariants}
           initial="hidden"
-          animate="visible"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.1 }}
           className="grid grid-cols-1 lg:grid-cols-2 gap-8"
         >
           {clientProjects.map((project, index) => (

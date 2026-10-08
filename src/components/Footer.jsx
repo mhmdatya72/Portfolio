@@ -1,6 +1,6 @@
 import React from 'react'
 import { motion } from 'framer-motion'
-import { FaHeart, FaLinkedin, FaGithub, FaFacebook, FaWhatsapp, FaArrowUp } from 'react-icons/fa'
+import { FaLinkedin, FaGithub, FaFacebook, FaWhatsapp, FaArrowUp } from 'react-icons/fa'
 
 const Footer = () => {
   const scrollToTop = () => {
@@ -36,6 +36,7 @@ const Footer = () => {
     { name: 'Education', href: '#education' },
     { name: 'Experience', href: '#experience' },
     { name: 'Skills', href: '#skills' },
+    { name: 'Services', href: '#services' },
     { name: 'Projects', href: '#projects' },
     { name: 'Contact', href: '#contact' }
   ]
@@ -84,22 +85,28 @@ const Footer = () => {
   }
 
   return (
-    <footer className="relative bg-gray-900 dark:bg-black text-white mt-8">
+    <motion.footer
+      initial={{ opacity: 0, y: 28 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.12 }}
+      transition={{ duration: 0.65, ease: 'easeOut' }}
+      className="footer-modern relative text-white mt-8"
+    >
       {/* Gradient top border */}
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary to-transparent"></div>
-      <div className="container-custom">
-        <div className="py-12">
-          <div className="grid md:grid-cols-3 gap-8">
+      <div className="container-custom footer-shell">
+        <div className="footer-inner">
+          <div className="footer-grid">
             {/* Brand Section */}
-            <div className="space-y-4">
+            <div className="footer-brand">
               <h3 className="text-2xl font-bold title-gradient">
                 Mohamed Atya Hawash
               </h3>
-              <p className="text-gray-400 leading-relaxed">
-                Full Stack Web Developer specializing in Laravel, PHP, and Vue.js. 
-                Passionate about creating efficient, scalable, and user-friendly applications.
+              <p className="footer-description">
+                Full Stack Web Developer specializing in Laravel, PHP, Vue.js, and SEO-friendly web development.
+                I create efficient, scalable, and search-ready applications.
               </p>
-              <div className="flex space-x-4">
+              <div className="footer-socials">
                 {socialLinks.map((social, index) => (
                   <motion.a
                     key={index}
@@ -108,7 +115,7 @@ const Footer = () => {
                     href={social.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="p-3 bg-gray-800 hover:bg-primary rounded-lg text-gray-400 hover:text-white transition-all duration-300"
+                    className="footer-social-link"
                     title={social.label}
                   >
                     {social.icon}
@@ -118,7 +125,7 @@ const Footer = () => {
             </div>
 
             {/* Quick Links */}
-            <div className="space-y-4">
+            <div className="footer-nav">
               <h4 className="text-lg font-semibold text-white">Quick Links</h4>
               <ul className="space-y-2">
                 {quickLinks.map((link, index) => (
@@ -136,36 +143,28 @@ const Footer = () => {
             </div>
 
             {/* Contact Info */}
-            <div className="space-y-4">
+            <div className="footer-contact">
               <h4 className="text-lg font-semibold text-white">Get In Touch</h4>
-              <div className="space-y-2 text-gray-400">
-                <p>📧 mohamedatya563@gmail.com</p>
-                <p>📞 +20 109 838 6972</p>
-                <p>🌍 Sidi-Ghazi, Kafr El-Dawar, Al-Buhayrah, Egypt</p>
+              <div className="footer-contact-list">
+                <a href="mailto:mohamedatya563@gmail.com">mohamedatya563@gmail.com</a>
+                <a href="tel:+201098386972">+20 109 838 6972</a>
+                <span>Sidi-Ghazi, Kafr El-Dawar, Al-Buhayrah, Egypt</span>
               </div>
             </div>
           </div>
 
           {/* Bottom Section */}
-          <div className="border-t border-gray-800 mt-12 pt-8">
-            <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-              <div className="flex items-center space-x-2 text-gray-400">
-                <span>© {new Date().getFullYear()} Mohamed Atya Hawash. Made with</span>
-                <motion.span
-                  animate={{ scale: [1, 1.2, 1] }}
-                  transition={{ duration: 1, repeat: Infinity }}
-                  className="text-red-500"
-                >
-                  <FaHeart />
-                </motion.span>
-                <span>and React</span>
+          <div className="footer-bottom">
+            <div className="footer-bottom-row">
+              <div className="footer-credit">
+                <span>© {new Date().getFullYear()} Mohamed Atya Hawash. All rights reserved.</span>
               </div>
               
               <motion.button
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.9 }}
                 onClick={scrollToTop}
-                className="flex items-center space-x-2 text-gray-400 hover:text-primary transition-colors duration-300"
+                className="footer-top-link"
               >
                 <span>Back to top</span>
                 <FaArrowUp />
@@ -174,7 +173,7 @@ const Footer = () => {
           </div>
         </div>
       </div>
-    </footer>
+    </motion.footer>
   )
 }
 

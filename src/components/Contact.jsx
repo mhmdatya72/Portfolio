@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import { motion } from 'framer-motion'
-import emailjs from '@emailjs/browser'
 import { 
   FaEnvelope, 
   FaPhone, 
@@ -9,7 +8,6 @@ import {
   FaGithub, 
   FaFacebook,
   FaWhatsapp,
-  FaPaperPlane,
   FaCheckCircle
 } from 'react-icons/fa'
 
@@ -19,7 +17,6 @@ const Contact = () => {
     email: '',
     message: ''
   })
-  const [isSubmitting, setIsSubmitting] = useState(false)
   const [isSubmitted, setIsSubmitted] = useState(false)
 
   const containerVariants = {
@@ -52,51 +49,21 @@ const Contact = () => {
     })
   }
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault()
-    setIsSubmitting(true)
-    
-    try {
-      // EmailJS configuration
-      const serviceId = 'service_portfolio'
-      const templateId = 'template_contact'
-      const publicKey = 'your_public_key_here'
-      
-      // Prepare template parameters
-      const templateParams = {
-        from_name: formData.name,
-        from_email: formData.email,
-        message: formData.message,
-        to_email: 'mohamedatya563@gmail.com'
-      }
-      
-      // Send email using EmailJS
-      const result = await emailjs.send(serviceId, templateId, templateParams, publicKey)
-      
-      console.log('Email sent successfully:', result)
-      
-      setIsSubmitting(false)
-      setIsSubmitted(true)
-      setFormData({ name: '', email: '', message: '' })
-      
-      // Reset success message after 5 seconds
-      setTimeout(() => setIsSubmitted(false), 5000)
-      
-    } catch (error) {
-      console.error('Error sending email:', error)
-      
-      // Fallback to mailto if EmailJS fails
-      const subject = `New Message from ${formData.name} - Portfolio Contact Form`
-      const body = `Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`
-      const mailtoLink = `mailto:mohamedatya563@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`
-      
-      window.location.href = mailtoLink
-      
-      setIsSubmitting(false)
-      setIsSubmitted(true)
-      setFormData({ name: '', email: '', message: '' })
-      setTimeout(() => setIsSubmitted(false), 5000)
-    }
+    const body = [
+      'New portfolio message',
+      `Name: ${formData.name}`,
+      `Email: ${formData.email}`,
+      '',
+      'Message:',
+      formData.message,
+    ].join('\n')
+    const whatsappUrl = `https://wa.me/201098386972?text=${encodeURIComponent(body)}`
+    const whatsappWindow = window.open(whatsappUrl, '_blank')
+    if (whatsappWindow) whatsappWindow.opener = null
+    setIsSubmitted(true)
+    setTimeout(() => setIsSubmitted(false), 7000)
   }
 
   const contactInfo = [
@@ -148,8 +115,8 @@ const Contact = () => {
   ]
 
   return (
-    <section id="contact" className="py-20 px-4">
-      <div className="container-custom relative">
+    <section id="contact" className="contact-modern py-24 px-4">
+      <div className="container-custom relative contact-shell">
         {/* Ambient glow */}
         <div className="absolute -top-20 right-0 w-72 h-72 bg-primary/10 rounded-full blur-3xl animate-float pointer-events-none"></div>
         <div className="absolute bottom-0 left-0 w-72 h-72 bg-indigo-500/10 rounded-full blur-3xl animate-float pointer-events-none" style={{ animationDelay: '3s' }}></div>
@@ -157,11 +124,12 @@ const Contact = () => {
         <motion.div
           variants={containerVariants}
           initial="hidden"
-          animate="visible"
-          className="max-w-6xl mx-auto"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.15 }}
+          className="contact-content"
         >
           {/* Section Header */}
-          <motion.div variants={itemVariants} className="text-center mb-16">
+          <motion.div variants={itemVariants} className="contact-heading">
             <span className="section-eyebrow">
               <span className="w-1.5 h-1.5 bg-primary rounded-full animate-pulse"></span>
               Get In Touch
@@ -175,9 +143,9 @@ const Contact = () => {
             </p>
           </motion.div>
 
-          <div className="grid lg:grid-cols-2 gap-12">
+          <div className="contact-layout">
             {/* Contact Information */}
-            <motion.div variants={itemVariants} className="space-y-8">
+            <motion.div variants={itemVariants} className="contact-aside">
               <div>
                 <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">
                   Let's Connect
@@ -195,7 +163,7 @@ const Contact = () => {
                     key={index}
                     whileHover={{ scale: 1.02, x: 10 }}
                     href={info.link}
-                    className="flex items-center gap-4 p-4 rounded-xl glass glass-card-hover hover:bg-primary/5 dark:hover:bg-primary/5 transition-colors duration-300 group"
+                  className="contact-info-row group"
                   >
                     <div className="p-3 bg-primary/10 rounded-lg group-hover:bg-primary/20 transition-colors duration-300">
                       {info.icon}
@@ -217,7 +185,7 @@ const Contact = () => {
                 <h4 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">
                   Follow Me
                 </h4>
-                <div className="flex space-x-4">
+                <div className="contact-socials">
                   {socialLinks.map((social, index) => (
                     <motion.a
                       key={index}
@@ -226,7 +194,7 @@ const Contact = () => {
                       href={social.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className={`p-3 glass rounded-xl text-gray-600 dark:text-gray-400 ${social.color} transition-all duration-300`}
+                      className={`contact-social ${social.color}`}
                       title={social.label}
                     >
                       {social.icon}
@@ -238,7 +206,7 @@ const Contact = () => {
 
             {/* Contact Form */}
             <motion.div variants={itemVariants}>
-              <div className="glass gradient-ring glass-card-hover rounded-2xl p-8">
+              <div className="contact-form-panel">
                 <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">
                   Send a Message
                 </h3>
@@ -251,7 +219,7 @@ const Contact = () => {
                   >
                     <FaCheckCircle className="text-green-500" size={20} />
                     <span className="text-green-700 dark:text-green-300 font-medium">
-                      Message sent successfully! I'll get back to you soon at mohamedatya563@gmail.com
+                      WhatsApp opened with your message. Press Send in WhatsApp to deliver it.
                     </span>
                   </motion.div>
                 )}
@@ -268,7 +236,7 @@ const Contact = () => {
                       value={formData.name}
                       onChange={handleInputChange}
                       required
-                      className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-xl focus:ring-2 focus:ring-primary focus:border-transparent bg-white/70 dark:bg-gray-800/60 backdrop-blur-sm text-gray-900 dark:text-white transition-colors duration-300"
+                      className="contact-input"
                       placeholder="Your full name"
                     />
                   </div>
@@ -284,7 +252,7 @@ const Contact = () => {
                       value={formData.email}
                       onChange={handleInputChange}
                       required
-                      className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-xl focus:ring-2 focus:ring-primary focus:border-transparent bg-white/70 dark:bg-gray-800/60 backdrop-blur-sm text-gray-900 dark:text-white transition-colors duration-300"
+                      className="contact-input"
                       placeholder="your.email@example.com"
                     />
                   </div>
@@ -300,31 +268,19 @@ const Contact = () => {
                       onChange={handleInputChange}
                       required
                       rows={6}
-                      className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-xl focus:ring-2 focus:ring-primary focus:border-transparent bg-white/70 dark:bg-gray-800/60 backdrop-blur-sm text-gray-900 dark:text-white transition-colors duration-300 resize-none"
+                      className="contact-input contact-textarea"
                       placeholder="Tell me about your project or just say hello..."
                     />
                   </div>
 
                   <motion.button
                     type="submit"
-                    disabled={isSubmitting}
-                    whileHover={{ scale: isSubmitting ? 1 : 1.05 }}
-                    whileTap={{ scale: isSubmitting ? 1 : 0.95 }}
-                    className={`w-full btn-primary flex items-center justify-center gap-2 ${
-                      isSubmitting ? 'opacity-50 cursor-not-allowed' : ''
-                    }`}
+                    whileHover={{ y: -2 }}
+                    whileTap={{ scale: 0.98 }}
+                    className="contact-submit"
                   >
-                    {isSubmitting ? (
-                      <>
-                        <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
-                        Sending...
-                      </>
-                    ) : (
-                      <>
-                        <FaPaperPlane size={18} />
-                        Send Message
-                      </>
-                    )}
+                    <FaWhatsapp size={18} />
+                    Continue in WhatsApp
                   </motion.button>
                 </form>
               </div>

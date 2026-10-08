@@ -29,9 +29,27 @@ const Projects = () => {
 
   const projects = [
     {
+      title: 'Eleman EG — Al Eman Contracting',
+      description: 'Arabic-first company website for Al Eman, presenting its general contracting, construction, and surveying services across Egypt.',
+      image: '/project-eleman-eg.png',
+      mobileImage: 'https://elemaneg.com/storage/site-content/fngMDcjUhJD3ZheP23FACDpDxi3IH8A7DyPHE6bE.jpg',
+      technologies: ['Arabic RTL', 'English', 'SEO'],
+      features: [
+        'Showcases general contracting and surveying services',
+        'Arabic and English language versions',
+        'Search-friendly metadata and structured business information'
+      ],
+      github: 'https://github.com/mhmdatya72',
+      demo: 'https://elemaneg.com/',
+      status: 'Live',
+      country: 'Egypt',
+      icon: <FaGlobe className="text-primary" size={32} />
+    },
+    {
       title: 'Cordiana ERP System',
       description: 'All-in-One Enterprise Business Management Platform. A comprehensive Cloud ERP solution featuring Sales CRM, POS, HR & Payroll, Financial Accounting, and Electronic Invoicing.',
       image: '/project-cordiana.jpg',
+      mobileImage: '/mobile-project-cordiana.png',
       technologies: ['Laravel', 'PHP 8+', 'MySQL', 'Vue.js', 'Bootstrap', 'RESTful APIs'],
       features: [
         'Cloud ERP: Sales CRM, POS, HR & Payroll, Financial Accounting, E-Invoicing',
@@ -49,6 +67,7 @@ const Projects = () => {
       title: 'One Step Industrial',
       description: 'B2B E-Commerce & Equipment Supply Platform. A scalable B2B industrial marketplace supporting multi-category product hierarchies and dynamic machinery quote requests.',
       image: '/project-onestep.jpg',
+      mobileImage: '/mobile-project-onestep.png',
       technologies: ['Laravel', 'MySQL', 'Vue.js', 'Bootstrap', 'RESTful APIs'],
       features: [
         'Scalable B2B industrial marketplace with multi-category hierarchies',
@@ -66,6 +85,7 @@ const Projects = () => {
       title: 'Tour Egypt Club',
       description: 'Travel & Tourism Booking Engine. An interactive travel engine featuring dynamic tour itineraries, transport reservations, and automated quote systems.',
       image: '/project-tour.jpg',
+      mobileImage: '/mobile-project-tour.png',
       technologies: ['Laravel', 'MySQL', 'Vue.js', 'Bootstrap'],
       features: [
         'Dynamic tour itineraries and transport reservations',
@@ -83,6 +103,7 @@ const Projects = () => {
       title: 'Al Manarat Al Munira',
       description: 'Heavy Equipment & Crane Fleet Management Platform. An enterprise web solution for industrial equipment hire, service management, and engineering project tracking.',
       image: '/project-almanarat.jpg',
+      mobileImage: '/mobile-project-almanarat.png',
       technologies: ['Laravel', 'MySQL', 'Vue.js', 'Bootstrap'],
       features: [
         'Enterprise web solution for equipment hire and service management',
@@ -100,6 +121,7 @@ const Projects = () => {
       title: 'Taggz App',
       description: 'AI-Powered Event Photo Matching Platform. Backend APIs and media processing workflows for an AI-driven event platform that matches and distributes event photos via facial recognition.',
       image: '/project-taggz.jpg',
+      mobileImage: '/mobile-project-taggz.png',
       technologies: ['Laravel', 'PHP 8+', 'MySQL', 'RESTful APIs', 'Media Processing'],
       features: [
         'AI facial recognition photo matching and distribution',
@@ -117,6 +139,7 @@ const Projects = () => {
       title: 'Al-Nasser Group Portal',
       description: 'Enterprise Retail Operations & Delivery Dashboard. An enterprise internal portal for Al-Nasser (leading Kuwaiti retail brand) to manage logistics, delivery operations, and multi-store workflows.',
       image: '/alnasser-brand.jpg',
+      mobileImage: '/mobile-project-alnasser.png',
       technologies: ['Laravel', 'MySQL', 'Vue.js', 'Bootstrap'],
       features: [
         'Enterprise portal for logistics and delivery operations',
@@ -140,7 +163,8 @@ const Projects = () => {
         <motion.div
           variants={containerVariants}
           initial="hidden"
-          animate="visible"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.15 }}
           className="text-center mb-8 sm:mb-12"
         >
           <motion.span variants={itemVariants} className="section-eyebrow">
@@ -152,7 +176,7 @@ const Projects = () => {
           </motion.h2>
           <motion.div variants={itemVariants} className="w-24 h-1 bg-gradient-to-r from-primary to-indigo-500 mx-auto rounded-full mb-4"></motion.div>
           <motion.p variants={itemVariants} className="text-base sm:text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto px-4">
-            A showcase of live client work — 24+ projects delivered, from enterprise ERPs to AI-powered platforms
+            A showcase of live client work — 25+ projects delivered, from enterprise ERPs to AI-powered platforms
           </motion.p>
         </motion.div>
 
@@ -160,15 +184,16 @@ const Projects = () => {
         <motion.div
           variants={containerVariants}
           initial="hidden"
-          animate="visible"
-          className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 mb-8 sm:mb-12"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.1 }}
+          className="project-showcase-grid mb-8 sm:mb-12"
         >
           {projects.map((project, index) => (
             <motion.div
               key={index}
               variants={itemVariants}
               whileHover={{ y: -6 }}
-              className="glass gradient-ring glass-card-hover shine-sweep rounded-2xl shadow-lg overflow-hidden flex flex-col h-full transition-shadow duration-300 hover:shadow-2xl"
+              className="project-showcase-card glass gradient-ring glass-card-hover shine-sweep overflow-hidden transition-shadow duration-300"
             >
               {/* Project Image */}
               <div className="relative h-48 sm:h-56 overflow-hidden">
@@ -178,6 +203,9 @@ const Projects = () => {
                   className="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
                   loading="lazy"
                 />
+                <div className="project-mobile-preview" aria-hidden="true">
+                  <div className="project-phone-screen"><img src={project.mobileImage} alt="" loading="lazy" /></div>
+                </div>
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent"></div>
                 <div className="absolute top-3 left-3 flex gap-2">
                   <span className="px-2.5 py-1 bg-emerald-500 text-white text-[11px] sm:text-xs font-bold rounded-full shadow-lg">
@@ -268,11 +296,12 @@ const Projects = () => {
         {/* Call to Action */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.3 }}
-          className="text-center"
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.6, delay: 0.15 }}
+          className="project-cta"
         >
-          <div className="glass-card glass-card-hover gradient-ring rounded-2xl p-4 sm:p-6 md:p-8 max-w-2xl mx-auto">
+          <div className="project-cta-panel">
             <h3 className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white mb-4">
               Interested in Working Together?
             </h3>

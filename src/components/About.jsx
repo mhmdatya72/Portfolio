@@ -2,149 +2,84 @@ import React from 'react'
 import { motion } from 'framer-motion'
 import { FaCode, FaRocket, FaShieldAlt, FaUsers } from 'react-icons/fa'
 
-const About = () => {
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.2,
-        delayChildren: 0.1,
-      },
-    },
-  }
+const achievements = [
+  { icon: <FaRocket />, title: 'Performance Optimization', description: 'Reduced API response times by 30% while serving 1,000+ concurrent users', tag: 'perf' },
+  { icon: <FaUsers />, title: 'Scalable Solutions', description: 'Built systems serving 1,000+ concurrent users', tag: 'scale' },
+  { icon: <FaShieldAlt />, title: 'Security Focus', description: 'Implemented robust security measures in all projects', tag: 'secure' },
+  { icon: <FaCode />, title: 'Clean Code', description: 'Maintainable and well-documented codebase', tag: 'quality' },
+]
 
-  const itemVariants = {
-    hidden: { opacity: 0, y: 30 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.6,
-        ease: 'easeOut',
-      },
-    },
-  }
+const metrics = [
+  { value: '05+', label: 'YEARS BUILDING' },
+  { value: '21+', label: 'WEB APPLICATIONS' },
+  { value: '1K+', label: 'USERS SUPPORTED' },
+  { value: '30%', label: 'FASTER API' },
+]
 
-  const achievements = [
-    {
-      icon: <FaRocket className="text-primary" size={24} />,
-      title: 'Performance Optimization',
-      description: 'Reduced API response times by 30% while serving 1,000+ concurrent users',
-    },
-    {
-      icon: <FaUsers className="text-primary" size={24} />,
-      title: 'Scalable Solutions',
-      description: 'Built systems serving 1,000+ concurrent users',
-    },
-    {
-      icon: <FaShieldAlt className="text-primary" size={24} />,
-      title: 'Security Focus',
-      description: 'Implemented robust security measures in all projects',
-    },
-    {
-      icon: <FaCode className="text-primary" size={24} />,
-      title: 'Clean Code',
-      description: 'Maintainable and well-documented codebase',
-    },
-  ]
+const rise = {
+  hidden: { opacity: 0, y: 24 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.55, ease: 'easeOut' } },
+}
 
-  return (
-    <section id="about" className="py-20 px-4">
-      <div className="container-custom">
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          animate="visible"
-          className="max-w-6xl mx-auto"
-        >
-          {/* Section Header */}
-          <motion.div variants={itemVariants} className="text-center mb-16">
-            <span className="section-eyebrow">
-              <span className="w-1.5 h-1.5 bg-primary rounded-full animate-pulse"></span>
-              Who I Am
-            </span>
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">
-              About <span className="title-gradient">Me</span>
-            </h2>
-            <div className="w-24 h-1 bg-gradient-to-r from-primary to-indigo-500 mx-auto rounded-full"></div>
-          </motion.div>
+const About = () => (
+  <section id="about" className="about-lab py-24 px-4">
+    <div className="container-custom about-shell">
+      <motion.div
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.12 }}
+        className="about-content"
+      >
+        <motion.div variants={rise} className="about-heading">
+          <span className="about-kicker"><i /> PROFILE / 01</span>
+          <h2>About <span>Me</span><sup>01</sup></h2>
+          <p>A little context behind the code.</p>
+        </motion.div>
 
-          <div className="max-w-6xl mx-auto">
-            <div className="grid lg:grid-cols-2 gap-12 items-center">
-              {/* Content - Left Side */}
-              <motion.div variants={itemVariants} className="glass-card glass-card-hover gradient-ring p-6 sm:p-8 space-y-6">
-                <p className="text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
-                  I'm a Software Engineering Team Lead &amp; Senior Full Stack Laravel Developer with 
-                  over <span className="text-primary font-semibold">5+ years</span> of experience 
-                  architecting and scaling web applications, Cloud ERPs, and SaaS platforms using 
-                  PHP 8+, Laravel, MySQL, Vue.js, and RESTful APIs.
-                </p>
-                
-                <p className="text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
-                  I lead engineering teams and manage full software development lifecycles, with a proven 
-                  track record optimizing backend performance — reducing API response times by 30% and 
-                  supporting 1,000+ concurrent users. My expertise spans system security, database design, 
-                  and delivering complex B2B/Enterprise solutions in Agile environments.
-                </p>
+        <div className="about-main-grid">
+          <motion.article variants={rise} className="about-story">
+            <div className="about-story-top"><span>01 — THE ENGINEER</span><span className="about-live"><i /> AVAILABLE FOR IMPACT</span></div>
+            <div className="about-big-mark" aria-hidden="true">{`{ }`}</div>
+            <p className="about-lead">I turn complex business needs into <em>software that scales.</em></p>
+            <p className="about-copy">I'm a Software Engineering Team Lead &amp; Senior Full Stack Laravel Developer with over <b>5+ years</b> of experience architecting and scaling web applications, Cloud ERPs, and SaaS platforms using PHP 8+, Laravel, MySQL, Vue.js, and RESTful APIs. I also work on SEO to help websites improve their visibility in search.</p>
+            <p className="about-copy">I lead engineering teams and manage full software development lifecycles, with a proven track record optimizing backend performance — reducing API response times by 30% and supporting 1,000+ concurrent users. My expertise spans system security, database design, SEO-friendly web development, and delivering complex B2B/Enterprise solutions in Agile environments.</p>
+            <div className="about-focus"><span>FOCUS</span><b>Architecture</b><b>Backend</b><b>SEO</b><b>Team Leadership</b><b>SaaS</b></div>
+            <p className="about-footnote">Away from the keyboard, I explore new technologies, contribute to open source, and share what I learn with the developer community.</p>
+          </motion.article>
 
-                <p className="text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
-                  When I'm not coding, I enjoy learning new technologies, contributing to open-source 
-                  projects, and sharing knowledge with the developer community. I believe in continuous 
-                  learning and staying up-to-date with the latest industry trends and best practices.
-                </p>
-              </motion.div>
-
-              {/* Key Stats - Right Side */}
-              <motion.div variants={itemVariants} className="space-y-8">
-                <div>
-                  <div className="grid grid-cols-2 gap-5">
-                    <div className="glass-card glass-card-hover text-center p-6">
-                      <div className="text-3xl sm:text-4xl font-bold title-gradient mb-2">5+</div>
-                      <div className="text-gray-600 dark:text-gray-400 text-sm font-medium">Years Experience</div>
-                    </div>
-                    <div className="glass-card glass-card-hover text-center p-6">
-                      <div className="text-3xl sm:text-4xl font-bold title-gradient mb-2">20+</div>
-                      <div className="text-gray-600 dark:text-gray-400 text-sm font-medium">Web Applications</div>
-                    </div>
-                    <div className="glass-card glass-card-hover text-center p-6">
-                      <div className="text-3xl sm:text-4xl font-bold title-gradient mb-2">1000+</div>
-                      <div className="text-gray-600 dark:text-gray-400 text-sm font-medium">Users Served</div>
-                    </div>
-                    <div className="glass-card glass-card-hover text-center p-6">
-                      <div className="text-3xl sm:text-4xl font-bold title-gradient mb-2">30%</div>
-                      <div className="text-gray-600 dark:text-gray-400 text-sm font-medium">Performance Boost</div>
-                    </div>
-                  </div>
+          <motion.aside variants={rise} className="about-console">
+            <div className="about-console-head"><span><i /><i /><i /></span><b>impact.log</b><small>LIVE DATA</small></div>
+            <div className="about-metrics">
+              {metrics.map((metric, index) => (
+                <div className="about-metric" key={metric.label}>
+                  <span className="about-metric-index">0{index + 1}</span>
+                  <strong>{metric.value}</strong>
+                  <small>{metric.label}</small>
+                  <span className="about-metric-line" />
                 </div>
-              </motion.div>
-            </div>
-
-            {/* Achievements Grid */}
-            <motion.div variants={itemVariants} className="grid grid-cols-2 gap-6 max-w-2xl mx-auto mt-16">
-              {achievements.map((achievement, index) => (
-                <motion.div
-                  key={index}
-                  whileHover={{ scale: 1.04, rotate: 1 }}
-                  className="glass-card glass-card-hover gradient-ring p-6 text-center group"
-                >
-                  <div className="mb-4 flex justify-center group-hover:scale-110 transition-transform duration-300">
-                    {achievement.icon}
-                  </div>
-                  <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
-                    {achievement.title}
-                  </h3>
-                  <p className="text-gray-600 dark:text-gray-400 text-sm">
-                    {achievement.description}
-                  </p>
-                </motion.div>
               ))}
-            </motion.div>
+            </div>
+            <div className="about-console-foot"><span>STATUS</span><b><i /> BUILDING WHAT'S NEXT</b></div>
+          </motion.aside>
+        </div>
+
+        <motion.div variants={rise} className="about-principles">
+          <div className="about-principles-title"><span>02 — HOW I BUILD</span><p>Principles in production</p></div>
+          <div className="about-principle-list">
+            {achievements.map((item, index) => (
+              <motion.article key={item.tag} whileHover={{ x: 5 }} className="about-principle">
+                <span className="about-principle-index">0{index + 1}</span>
+                <span className="about-principle-icon">{item.icon}</span>
+                <span className="about-principle-text"><b>{item.title}</b><small>{item.description}</small></span>
+                <code>{item.tag}</code>
+                <span className="about-principle-arrow">↗</span>
+              </motion.article>
+            ))}
           </div>
         </motion.div>
-      </div>
-    </section>
-  )
-}
+      </motion.div>
+    </div>
+  </section>
+)
 
 export default About

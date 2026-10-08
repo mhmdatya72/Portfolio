@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
-import { motion } from 'framer-motion'
-import { initEmailJS } from './config/emailjs'
+import { motion, useMotionValue, useSpring } from 'framer-motion'
 import { safeStorage } from './utils/storage'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
@@ -10,6 +9,7 @@ import About from './components/About'
 import Education from './components/Education'
 import Experience from './components/Experience'
 import Skills from './components/Skills'
+import Services from './components/Services'
 import Projects from './components/Projects'
 import Contact from './components/Contact'
 import Footer from './components/Footer'
@@ -17,21 +17,37 @@ import BackToTop from './components/BackToTop'
 import ScrollProgress from './components/ScrollProgress'
 import AllProjects from './components/AllProjects'
 
-function App() {
-  const [darkMode, setDarkMode] = useState(true)
+function PointerBackdrop() {
+  const pointerX = useMotionValue(-300)
+  const pointerY = useMotionValue(-300)
+  const x = useSpring(pointerX, { stiffness: 100, damping: 25, mass: 0.45 })
+  const y = useSpring(pointerY, { stiffness: 100, damping: 25, mass: 0.45 })
+  const trailX = useSpring(pointerX, { stiffness: 45, damping: 28, mass: 0.8 })
+  const trailY = useSpring(pointerY, { stiffness: 45, damping: 28, mass: 0.8 })
 
   useEffect(() => {
-    // Check for saved theme preference or default to dark mode
-    const savedTheme = safeStorage.getItem('theme')
-    if (savedTheme === 'light') {
-      setDarkMode(false)
-    } else {
-      setDarkMode(true)
+    const followPointer = (event) => {
+      pointerX.set(event.clientX)
+      pointerY.set(event.clientY)
     }
-    
-    // Initialize EmailJS
-    initEmailJS()
-  }, [])
+    window.addEventListener('pointermove', followPointer, { passive: true })
+    return () => window.removeEventListener('pointermove', followPointer)
+  }, [pointerX, pointerY])
+
+  return (
+    <div className="pointer-backdrop" aria-hidden="true">
+      <motion.div className="pointer-aura pointer-aura-trail" style={{ x: trailX, y: trailY }}>
+        <span className="pointer-ring" />
+        <span className="pointer-orbit pointer-orbit-one" />
+        <span className="pointer-orbit pointer-orbit-two" />
+      </motion.div>
+      <motion.div className="pointer-aura pointer-aura-core" style={{ x, y }} />
+    </div>
+  )
+}
+
+function App() {
+  const [darkMode, setDarkMode] = useState(() => safeStorage.getItem('portfolio-theme-v3') !== 'light')
 
   useEffect(() => {
     // Apply theme to document
@@ -40,7 +56,7 @@ function App() {
     } else {
       document.documentElement.classList.remove('dark')
     }
-    safeStorage.setItem('theme', darkMode ? 'dark' : 'light')
+    safeStorage.setItem('portfolio-theme-v3', darkMode ? 'dark' : 'light')
   }, [darkMode])
 
   // Handle scrolling to section after page load
@@ -82,7 +98,7 @@ function App() {
 
   // Update URL based on current section
   useEffect(() => {
-    const sections = ['home', 'about', 'education', 'experience', 'skills', 'projects', 'contact']
+    const sections = ['home', 'about', 'education', 'experience', 'skills', 'services', 'projects', 'contact']
     
     const handleScroll = () => {
       const scrollPosition = window.scrollY + 100 // Offset for navbar
@@ -135,6 +151,8 @@ function App() {
           <div className="absolute bottom-0 right-1/4 w-[500px] h-[500px] bg-indigo-500/10 rounded-full blur-[120px]"></div>
         </div>
 
+        <PointerBackdrop />
+
         <Routes>
           <Route path="/" element={
             <>
@@ -147,6 +165,7 @@ function App() {
                 <Education />
                 <Experience />
                 <Skills />
+                <Services />
                 <Projects />
                 <Contact />
               </main>

@@ -20,7 +20,7 @@ const Navbar = ({ darkMode, toggleDarkMode }) => {
   useEffect(() => {
     if (window.location.pathname !== '/') return
 
-    const sections = ['home', 'about', 'education', 'experience', 'skills', 'projects', 'contact']
+    const sections = ['home', 'about', 'education', 'experience', 'skills', 'services', 'projects', 'contact']
 
     const handleSpy = () => {
       const position = window.scrollY + 140
@@ -57,6 +57,7 @@ const Navbar = ({ darkMode, toggleDarkMode }) => {
     { name: 'Education', href: '#education' },
     { name: 'Experience', href: '#experience' },
     { name: 'Skills', href: '#skills' },
+    { name: 'Services', href: '#services' },
     { name: 'Projects', href: '#projects' },
     { name: 'Contact', href: '#contact' },
   ]
@@ -128,13 +129,19 @@ const Navbar = ({ darkMode, toggleDarkMode }) => {
         >
         <div className="flex items-center justify-between h-14 sm:h-16">
           {/* Logo */}
-          <motion.div
-            whileHover={{ scale: 1.05 }}
-            className="flex-shrink-0"
-          >
-            <h1 className="text-lg sm:text-xl font-bold title-gradient">
-              Mohamed Atya Hawash
-            </h1>
+          <motion.div whileHover={{ y: -1 }} className="flex-shrink-0">
+            <button type="button" onClick={() => scrollToSection('#home')} className="brand-logo" aria-label="Mohamed Atya Hawash — Home">
+              <span className="brand-mark" aria-hidden="true">
+                <svg viewBox="0 0 48 48" fill="none">
+                  <path d="M8 35V13l9 13 8-13v22" />
+                  <path d="m27 35 8-22 8 22M30 28h10" />
+                </svg>
+              </span>
+              <span className="brand-copy">
+                <span className="brand-name">Mohamed Atya Hawash</span>
+                <span className="brand-caption">SOFTWARE ENGINEER</span>
+              </span>
+            </button>
           </motion.div>
 
           {/* Desktop Navigation */}

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { motion } from 'framer-motion'
 import { 
   FaLaravel, 
@@ -15,10 +15,13 @@ import {
   FaUsers,
   FaLightbulb,
   FaBug,
-  FaShieldAlt
+  FaShieldAlt,
+  FaSearch
 } from 'react-icons/fa'
+import { SiNextdotjs, SiReact } from 'react-icons/si'
 
 const Skills = () => {
+  const [expandedCategories, setExpandedCategories] = useState({})
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -59,11 +62,13 @@ const Skills = () => {
       title: 'Frontend Development',
       icon: <FaCode className="text-primary" size={24} />,
       skills: [
+        { name: 'React', icon: <SiReact className="text-cyan-400" size={20} />, level: null },
+        { name: 'Next.js', icon: <SiNextdotjs className="text-gray-900 dark:text-white" size={20} />, level: null },
+        { name: 'JavaScript ES6+', icon: <FaJs className="text-yellow-500" size={20} />, level: 99 },
+        { name: 'Vue.js', icon: <FaVuejs className="text-green-500" size={20} />, level: 95 },
         { name: 'HTML5', icon: <FaHtml5 className="text-orange-500" size={20} />, level: 99 },
         { name: 'CSS3', icon: <FaCss3Alt className="text-blue-500" size={20} />, level: 99 },
         { name: 'Sass (SCSS)', icon: <FaCss3Alt className="text-pink-500" size={20} />, level: 95 },
-        { name: 'JavaScript ES6+', icon: <FaJs className="text-yellow-500" size={20} />, level: 99 },
-        { name: 'Vue.js', icon: <FaVuejs className="text-green-500" size={20} />, level: 95 },
         { name: 'Bootstrap', icon: <FaBootstrap className="text-purple-500" size={20} />, level: 99 },
         { name: 'Blade Templating', icon: <FaCode className="text-cyan-500" size={20} />, level: 97 },
       ]
@@ -100,105 +105,50 @@ const Skills = () => {
         { name: 'Technical Communication & Stakeholder Alignment', icon: <FaCode className="text-green-500" size={20} />, level: 97 },
         { name: 'Adaptability & Rapid Onboarding', icon: <FaBug className="text-red-500" size={20} />, level: 97 },
       ]
+    },
+    {
+      title: 'Search Engine Optimization',
+      icon: <FaSearch className="text-primary" size={24} />,
+      skills: [
+        { name: 'Technical SEO', icon: <FaSearch className="text-cyan-500" size={20} />, level: null },
+        { name: 'On-Page Optimization', icon: <FaCode className="text-green-500" size={20} />, level: null },
+        { name: 'SEO-Friendly Web Development', icon: <FaCode className="text-blue-500" size={20} />, level: null },
+      ]
     }
   ]
 
-  const SkillBar = ({ skill, level }) => (
-    <div className="mb-4">
-      <div className="flex items-center justify-between mb-2">
-        <div className="flex items-center gap-2 min-w-0 flex-1">
-          {skill.icon}
-          <span className="font-medium text-gray-700 dark:text-gray-300 text-sm sm:text-base truncate">{skill.name}</span>
-        </div>
-        <span className="text-xs sm:text-sm text-gray-500 dark:text-gray-400 ml-2 flex-shrink-0">{level}%</span>
-      </div>
-      <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2">
-        <motion.div
-          initial={{ width: 0 }}
-          animate={{ width: `${level}%` }}
-          transition={{ duration: 1, ease: 'easeOut' }}
-          className="bg-gradient-to-r from-primary to-sky-600 h-2 rounded-full"
-        />
-      </div>
+  const coreStackNames = ['Laravel', 'PHP 8+', 'MySQL', 'Vue.js', 'React', 'Next.js', 'RESTful APIs']
+  const coreStack = coreStackNames.map((name) => skillCategories.flatMap((category) => category.skills).find((skill) => skill.name === name))
+  const getProficiency = (level) => level == null ? null : level >= 98 ? 'Expert' : level >= 95 ? 'Advanced' : 'Proficient'
+
+  const SkillBar = ({ skill, level, index }) => (
+    <div className="skill-row">
+      <div className="skill-row-top"><span className="skill-row-icon">{skill.icon}</span><span className="skill-row-name">{skill.name}</span>{getProficiency(level) && <span className="skill-level">{getProficiency(level)}</span>}<code>{String(index + 1).padStart(2, '0')}</code></div>
+      {level != null && <div className="skill-track" aria-label={`${skill.name}: ${getProficiency(level)}`}><motion.span initial={{ scaleX: 0 }} whileInView={{ scaleX: 1 }} viewport={{ once: true }} transition={{ duration: .8, delay: index * .04, ease: 'easeOut' }} style={{ width: level >= 98 ? '92%' : level >= 95 ? '78%' : '64%' }} /></div>}
     </div>
   )
 
   return (
-    <section id="skills" className="py-20 px-4">
-      <div className="container-custom">
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          animate="visible"
-          className="max-w-6xl mx-auto"
-        >
-          {/* Section Header */}
-          <motion.div variants={itemVariants} className="text-center mb-12 md:mb-16">
-            <span className="section-eyebrow">
-              <span className="w-1.5 h-1.5 bg-primary rounded-full animate-pulse"></span>
-              Tech Stack
-            </span>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">
-              Skills & <span className="title-gradient">Expertise</span>
-            </h2>
-            <div className="w-24 h-1 bg-gradient-to-r from-primary to-indigo-500 mx-auto rounded-full mb-4"></div>
-          </motion.div>
-
-          {/* Skills Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
-            {skillCategories.map((category, categoryIndex) => (
-              <motion.div
-                key={categoryIndex}
-                variants={itemVariants}
-                whileHover={{ scale: 1.02 }}
-                className="glass-card glass-card-hover gradient-ring p-4 sm:p-6 md:p-8"
-              >
-                <div className="flex items-center gap-3 mb-6">
-                  {category.icon}
-                  <h3 className="text-xl font-bold text-gray-900 dark:text-white">
-                    {category.title}
-                  </h3>
-                </div>
-                
-                <div className="space-y-4">
-                  {category.skills.map((skill, skillIndex) => (
-                    <SkillBar key={skillIndex} skill={skill} level={skill.level} />
-                  ))}
-                </div>
-              </motion.div>
-            ))}
-          </div>
-
-          {/* Additional Info */}
-          <motion.div
-            variants={itemVariants}
-            className="mt-12 md:mt-16 text-center"
-          >
-            <div className="glass-card glass-card-hover gradient-ring p-4 sm:p-6 md:p-8 max-w-4xl mx-auto">
-              <h3 className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white mb-4">
-                Continuous Learning & Growth
-              </h3>
-              <p className="text-base sm:text-lg text-gray-600 dark:text-gray-400 leading-relaxed">
-                I'm always eager to learn new technologies and improve my skills. Currently exploring 
-                advanced Laravel features, microservices architecture, and modern frontend frameworks 
-                to stay at the forefront of web development.
-              </p>
-              <div className="mt-6 flex flex-wrap justify-center gap-2 sm:gap-4">
-                <span className="px-3 py-2 bg-primary/10 text-primary rounded-full text-xs sm:text-sm font-medium">
-                  Always Learning
-                </span>
-                <span className="px-3 py-2 bg-primary/10 text-primary rounded-full text-xs sm:text-sm font-medium">
-                  Problem Solver
-                </span>
-                <span className="px-3 py-2 bg-primary/10 text-primary rounded-full text-xs sm:text-sm font-medium">
-                  Team Player
-                </span>
-                <span className="px-3 py-2 bg-primary/10 text-primary rounded-full text-xs sm:text-sm font-medium">
-                  Detail Oriented
-                </span>
-              </div>
+    <section id="skills" className="skills-lab px-4 py-24">
+      <div className="container-custom skills-shell">
+        <motion.div variants={containerVariants} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.1 }}>
+          <header className="skills-heading"><div><span className="skills-kicker"><i /> CAPABILITY MAP / 04</span><h2>Skills &amp; <span>Expertise</span></h2></div><p>A working toolkit, organized<br />by how I ship software.</p></header>
+          <div className="skills-window">
+            <div className="skills-window-bar"><span><i /><i /><i /></span><code>skills.config — Mohamed Atya Hawash</code><small>{skillCategories.length} MODULES LOADED</small></div>
+            <div className="skills-index"><span>INDEX</span>{skillCategories.map((category, i) => <a key={category.title} href={`#skill-module-${i}`}><b>0{i + 1}</b>{category.title}</a>)}<div className="skills-index-status"><i /> ALL SYSTEMS OPERATIONAL</div></div>
+            <div className="skills-modules">
+              <div className="skills-core-stack"><span className="skills-core-label">CORE STACK <i /> DAILY DRIVER</span><div>{coreStack.map((skill) => <span className="skills-core-chip" key={skill.name}>{skill.icon}{skill.name}</span>)}</div></div>
+              {skillCategories.map((category, categoryIndex) => (
+                <motion.article id={`skill-module-${categoryIndex}`} key={category.title} variants={itemVariants} className={`skill-module${categoryIndex === 4 ? ' skill-module-soft' : ''}`}>
+                  <div className="skill-module-head"><span className="skill-module-icon">{category.icon}</span><div><small>MODULE / 0{categoryIndex + 1}</small><h3>{category.title}</h3></div><span className="skill-module-count">{String(category.skills.length).padStart(2, '0')} ENTRIES</span></div>
+                  <div className="skill-list">{(expandedCategories[categoryIndex] ? category.skills : category.skills.slice(0, 4)).map((skill, skillIndex) => <SkillBar key={skill.name} skill={skill} level={skill.level} index={skillIndex} />)}</div>
+                  {category.skills.length > 4 && <button className="skill-show-more" type="button" aria-expanded={Boolean(expandedCategories[categoryIndex])} onClick={() => setExpandedCategories((current) => ({ ...current, [categoryIndex]: !current[categoryIndex] }))}>{expandedCategories[categoryIndex] ? 'Show less' : `Show ${category.skills.length - 4} more`}<span>{expandedCategories[categoryIndex] ? '−' : '+'}</span></button>}
+                </motion.article>
+              ))}
+              <motion.aside variants={itemVariants} className="skills-growth"><span className="skills-kicker"><i /> IN PROGRESS</span><h3>Continuous learning<br />is part of the build.</h3><p>Currently exploring advanced Laravel features, microservices architecture, and modern frontend frameworks.</p><div><b>Always Learning</b><b>Problem Solver</b><b>Team Player</b><b>Detail Oriented</b></div></motion.aside>
             </div>
-          </motion.div>
+            <div className="skills-window-foot"><span>PHP · LARAVEL · VUE · MYSQL · API · SEO</span><span>END OF CONFIG <b>✓</b></span></div>
+          </div>
         </motion.div>
       </div>
     </section>
