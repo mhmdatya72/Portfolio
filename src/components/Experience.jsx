@@ -76,6 +76,7 @@ const Experience = () => {
     {
       title: "Full Stack Developer",
       company: "Kemeder / Kemework",
+      website: "https://kemedar.com/",
       period: "Jun 2021 – Dec 2021",
       type: "Contract",
       description: "Led the backend development of the Kemework freelance marketplace, delivering 20+ core features with Laravel and Bootstrap.",
